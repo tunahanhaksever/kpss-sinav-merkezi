@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>KPSS Hazırlık Portalı — Genel Yetenek & Genel Kültür Çıkmış Sorular ve Ders Notları</title>
+  <meta name="description" content="KPSS Lisans, Önlisans ve Ortaöğretim sınavlarına hazırlık: Tarih, Coğrafya, Vatandaşlık, Türkçe, Matematik çıkmış sınav soruları, gerekçeli çözümleri ve hafıza şifreleri.">
+  <meta name="author" content="Tunahan Haksever">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tunahanhaksever.github.io/kpss-sinav-merkezi/">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-page: #0d1527;
+      --bg-header: #111c35;
+      --bg-card: #192644;
+      --bg-card-alt: #141f38;
+      --bg-hover: #223359;
+      
+      --accent-crimson: #c2410c;
+      --accent-blue: #2563eb;
+      --accent-gold: #d97706;
+      --accent-gold-light: #fbbf24;
+      --accent-emerald: #10b981;
+      --accent-rose: #ef4444;
+      
+      --border-main: #24355a;
+      --border-dark: #16223b;
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; min-height: 100vh; background: var(--bg-page); color: var(--text-main); font-family: var(--font-main); }
+
+    /* Header */
+    header.portal-header {
+      background: var(--bg-header);
+      border-bottom: 2px solid var(--accent-gold);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .portal-seal {
+      width: 42px;
+      height: 42px;
+      background: #1e3a8a;
+      border: 2px solid var(--accent-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .portal-seal svg { width: 22px; height: 22px; fill: #fbbf24; }
+
+    .brand-text { display: flex; flex-direction: column; }
+    .portal-title { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: 0.3px; }
+    .portal-sub { font-size: 11px; font-weight: 600; color: var(--accent-gold); letter-spacing: 0.5px; text-transform: uppercase; }
+
+    /* Desktop Navigation Tabs */
+    .portal-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-tab-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-main);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.12s;
+    }
+    .nav-tab-btn:hover { background: var(--bg-hover); color: #fff; }
+    .nav-tab-btn.active {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: #fff;
+    }
+
+    /* Mobile Bottom Navigation Bar */
+    .mobile-bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-header);
+      border-top: 1px solid var(--border-main);
+      padding: 8px 10px 14px 10px;
+      z-index: 200;
+      justify-content: space-around;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.5);
+    }
+    .mobile-tab-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+    .mobile-tab-btn.active { color: var(--accent-gold); font-weight: 700; }
+    .mobile-tab-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* Main Container */
+    .app-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 20px 16px 85px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* Top Stats Banner */
+    .stats-banner {
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-main);
+      border-left: 4px solid var(--accent-blue);
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .banner-left h1 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 3px; }
+    .banner-left p { font-size: 13px; color: var(--text-muted); max-width: 650px; line-height: 1.5; }
+
+    .stats-counters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .counter-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-main);
+      border-radius: 6px;
+      padding: 8px 14px;
+      text-align: center;
+      min-width: 75px;
+    }
+    .counter-box .val { font-family: var(--font-mono); font-size: 18px; font-weight: 700; color: #fff; }
+    .counter-box .lbl { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-top: 1px; }
+
+    /* Interactive Question Card */
+    .exam-card {
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-main);
+      border-radius: 8px;
+      padding: 24px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .exam-meta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-main);
+      padding-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .period-badge {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      background: var(--accent-blue);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .topic-badge {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-gold-light);
+      background: rgba(217, 119, 6, 0.12);
+      border: 1px solid rgba(217, 119, 6, 0.3);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .q-text {
+      font-size: 16.5px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .opt-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-main);
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-size: 14px;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: background 0.1s, border-color 0.1s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .opt-btn:hover { background: var(--bg-hover); }
+    .opt-btn.correct { background: rgba(16, 185, 129, 0.2) !important; border-color: var(--accent-emerald) !important; color: #fff; font-weight: 600; }
+    .opt-btn.wrong { background: rgba(239, 68, 68, 0.2) !important; border-color: var(--accent-rose) !important; color: #fecdd3; }
+
+    .opt-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Explanation Box */
+    .explanation-box {
+      background: #0b1329;
+      border: 1px solid var(--border-main);
+      border-left: 3px solid var(--accent-gold);
+      border-radius: 6px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+    .exp-title { font-weight: 700; color: var(--accent-gold); }
+    .exp-law { font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); }
+
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-main);
+      padding-top: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-submit {
+      background: var(--accent-blue);
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-submit:hover { background: #1d4ed8; }
+
+    /* Schema Box & Mnemonics */
+    .schema-card {
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-main);
+      border-radius: 8px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .schema-card h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+    .schema-box {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border-main);
+      border-radius: 6px;
+      padding: 12px;
+      margin: 8px 0;
+    }
+    .schema-title { font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+    .schema-title.gold { color: #fde047; }
+    .schema-title.blue { color: #93c5fd; }
+    .schema-title.green { color: #6ee7b7; }
+    .schema-title.purple { color: #d8b4fe; }
+
+    .schema-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }
+    .schema-grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+    .schema-grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 6px; }
+
+    .schema-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-main);
+      border-radius: 6px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .schema-pill strong { font-family: var(--font-mono); font-size: 15px; color: var(--accent-gold); }
+    .schema-pill span { font-size: 11.5px; color: #fff; font-weight: 600; }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 16px;
+    }
+    .modal-box {
+      background: var(--bg-header);
+      border: 1px solid var(--border-main);
+      border-radius: 8px;
+      max-width: 760px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+      header.portal-header { padding: 12px 16px; }
+      .portal-nav { display: none; }
+      .mobile-bottom-nav { display: flex; }
+      .app-container { padding-bottom: 90px; }
+      .stats-banner { flex-direction: column; align-items: stretch; padding: 14px; }
+      .exam-card { padding: 16px 14px; }
+      .q-text { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header class="portal-header">
+    <a href="./index.html" class="brand-group">
+      <div class="portal-seal">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="portal-title">KPSS HAZIRLIK PORTALI</span>
+        <span class="portal-sub">Genel Yetenek & Genel Kültür Soru Bankası</span>
+      </div>
+    </a>
+
+    <!-- Desktop Tabs -->
+    <nav class="portal-nav">
+      <button class="nav-tab-btn active" id="tab-btn-exam" onclick="switchView('exam')">📝 Soru Çözümü</button>
+      <button class="nav-tab-btn" id="tab-btn-mnemonics" onclick="switchView('mnemonics')">📌 Hafıza Şifreleri</button>
+      <button class="nav-tab-btn" id="tab-btn-stream" onclick="switchView('stream')">📑 Tüm Sorular</button>
+      <button class="nav-tab-btn" id="tab-btn-academy" onclick="switchView('academy')">📚 Ders Notları</button>
+      <button class="nav-tab-btn" id="tab-btn-profile" style="background: rgba(217, 119, 6, 0.15); border-color: var(--accent-gold); color: #fff;" onclick="openProfileModal()">
+        👤 <span id="lbl-profile-name">Giriş / Kayıt</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mobile-bottom-nav">
+    <button class="mobile-tab-btn active" id="mob-btn-exam" onclick="switchView('exam')">
+      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+      <span>Soru Çöz</span>
+    </button>
+    <button class="mobile-tab-btn" id="mob-btn-mnemonics" onclick="switchView('mnemonics')">
+      <svg viewBox="0 0 24 24"><path d="M12 2l-5.5 9h11zM12 22l5.5-9h-11z"/></svg>
+      <span>Şifreler</span>
+    </button>
+    <button class="mobile-tab-btn" id="mob-btn-stream" onclick="switchView('stream')">
+      <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+      <span>Sorular</span>
+    </button>
+    <button class="mobile-tab-btn" id="mob-btn-academy" onclick="switchView('academy')">
+      <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+      <span>Dersler</span>
+    </button>
+    <button class="mobile-tab-btn" id="mob-btn-profile" onclick="openProfileModal()">
+      <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      <span id="mob-lbl-profile">Profil</span>
+    </button>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="app-container">
+    
+    <!-- Stats Banner -->
+    <div class="stats-banner">
+      <div class="banner-left">
+        <h1>KPSS Lisans & Önlisans Sınavına Hazırlık</h1>
+        <p>ÖSYM çıkmış sınav soruları, gerekçeli çözümleri ve unutulmaz hafıza formülleri.</p>
+      </div>
+
+      <div class="stats-counters">
+        <div class="counter-box">
+          <div class="val" id="stat-solved-total">0</div>
+          <div class="lbl">Çözülen</div>
+        </div>
+        <div class="counter-box">
+          <div class="val" id="stat-correct-count" style="color: var(--accent-emerald);">0</div>
+          <div class="lbl">Doğru</div>
+        </div>
+        <div class="counter-box">
+          <div class="val" id="stat-wrong-count" style="color: var(--accent-rose);">0</div>
+          <div class="lbl">Yanlış</div>
+        </div>
+        <div class="counter-box">
+          <div class="val" id="stat-repeat-count" style="color: var(--accent-gold);">0</div>
+          <div class="lbl">Tekrar Listesi</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 1: QUESTION SOLVER -->
+    <div id="view-pane-exam" class="view-pane">
+      <div class="exam-card">
+        
+        <div class="exam-meta-bar">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="period-badge" id="lbl-exam-period">2024 KPSS Lisans — Soru #1</span>
+            <span class="topic-badge" id="lbl-exam-topic">Tarih</span>
+          </div>
+          <button class="nav-tab-btn" style="padding: 4px 10px; font-size: 12px;" onclick="speakQuestion()">🔊 Soruyu Dinle</button>
+        </div>
+
+        <div class="q-text" id="lbl-exam-text">
+          Soru yükleniyor...
+        </div>
+
+        <div class="options-grid" id="lbl-exam-options">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- Explanation Card -->
+        <div class="explanation-box" id="lbl-exam-explanation" style="display: none;">
+          <div class="exp-title">Gerekçeli Çözüm ve Analiz:</div>
+          <div id="exp-content" style="color: var(--text-main);"></div>
+          <div class="exp-law" id="exp-ref"></div>
+        </div>
+
+        <div class="action-bar">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 12px; color: var(--accent-gold); font-family: var(--font-mono);" id="lbl-autosave-kpss">
+              💾 Otomatik Kayıt: Aktif
+            </span>
+            <button class="nav-tab-btn" style="padding: 4px 10px; font-size: 12px; color: var(--accent-rose); border-color: rgba(239,68,68,0.3);" onclick="resetKpssProgress()">
+              🔄 İlerlemeyi Sıfırla
+            </button>
+          </div>
+          
+          <button class="btn-submit" onclick="nextKpssQuestion()">
+            Sonraki Soru →
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- VIEW 2: MNEMONICS & SCHEMAS -->
+    <div id="view-pane-mnemonics" class="view-pane" style="display: none;">
+      <div style="display: flex; flex-direction: column; gap: 16px;" id="kpss-mnemonics-list">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- VIEW 3: STREAM ALL QUESTIONS -->
+    <div id="view-pane-stream" class="view-pane" style="display: none;">
+      <div class="stats-banner" style="border-left-color: var(--accent-gold);">
+        <select class="nav-tab-btn" id="stream-topic-sel" onchange="renderStreamKpss()" style="background: var(--bg-card); color: #fff;">
+          <option value="all">Tüm Dersler</option>
+          <option value="Tarih">Tarih</option>
+          <option value="Coğrafya">Coğrafya</option>
+          <option value="Vatandaşlık">Vatandaşlık / Anayasa</option>
+          <option value="Türkçe">Türkçe</option>
+          <option value="Matematik">Matematik</option>
+          <option value="Güncel Bilgiler">Güncel Bilgiler</option>
+        </select>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 14px;" id="stream-kpss-list">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- VIEW 4: LESSONS & ACADEMY -->
+    <div id="view-pane-academy" class="view-pane" style="display: none;">
+      <div class="schema-card">
+        <h2>📚 KPSS Genel Yetenek & Genel Kültür Müfredat Notları</h2>
+        <div class="schema-grid-3" id="kpss-academy-cards" style="margin-top: 8px;">
+          <!-- Topic cards -->
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Lecture Viewer Modal -->
+  <div class="modal-backdrop" id="kpss-modal">
+    <div class="modal-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-main); padding-bottom: 10px;">
+        <h3 id="kpss-modal-title" style="font-size: 16px; color: #fff;">Ders Notu</h3>
+        <button onclick="closeKpssModal()" style="background:none; border:none; color:var(--text-muted); font-size:20px; cursor:pointer;">✕</button>
+      </div>
+      <div id="kpss-modal-body" style="font-size: 13.5px; line-height: 1.7; color: var(--text-main);"></div>
+      <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
+        <button class="nav-tab-btn active" onclick="closeKpssModal()">Kapat</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile & Email Modal -->
+  <div class="modal-backdrop" id="kpss-profile-modal">
+    <div class="modal-box" style="max-width: 480px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-main); padding-bottom: 10px;">
+        <h3 style="font-size: 16px; color: #fff; font-weight: 700;">👤 Aday Profil & E-Posta Kaydı</h3>
+        <button onclick="closeProfileModal()" style="background:none; border:none; color:var(--text-muted); font-size:20px; cursor:pointer;">✕</button>
+      </div>
+      
+      <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+        E-posta adresinizi girerek çözdüğünüz soruları, doğru/yanlış verilerinizi ve tekrar listenizi kaydedin. Sayfayı yenilediğinizde <strong>kaldığınız sorudan devam edersiniz</strong>.
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 6px; margin: 6px 0;">
+        <label style="font-size: 12px; font-weight: 700; color: #fff;">E-Posta Adresiniz:</label>
+        <input type="email" id="kpss-user-email-input" placeholder="kpss@aday.gov.tr" style="background: var(--bg-card); border: 1px solid var(--border-main); color: #fff; padding: 10px 12px; border-radius: 6px; font-size: 14px; outline: none;">
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; flex-wrap: wrap; gap: 8px;">
+        <button class="nav-tab-btn" style="color: var(--accent-rose); border-color: rgba(239,68,68,0.4);" onclick="resetKpssProgress()">
+          🗑 İlerlemeyi Sıfırla
+        </button>
+        <div style="display: flex; gap: 8px;">
+          <button class="nav-tab-btn" onclick="closeProfileModal()">Kapat</button>
+          <button class="btn-submit" onclick="saveKpssUserEmail()">✓ Kaydet & Giriş Yap</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="./questions.js"></script>
+  <script src="./topics.js"></script>
+  <script src="./mnemonics.js"></script>
+  <script>
+    let currentKpssUser = localStorage.getItem('kpss_user_email') || 'misafir@kpss.gov.tr';
+    let kpssAllProgress = {};
+
+    loadKpssStorage();
+
+    let currentIndex = kpssAllProgress[currentKpssUser]?.currentIndex || 0;
+    let repeatQueue = kpssAllProgress[currentKpssUser]?.repeatQueue || [];
+    let correctCount = kpssAllProgress[currentKpssUser]?.correctCount || 0;
+    let wrongCount = kpssAllProgress[currentKpssUser]?.wrongCount || 0;
+    let answered = false;
+
+    // Init
+    updateProfileBadges();
+    loadKpssQuestion();
+    renderKpssMnemonics();
+    renderKpssAcademy();
+    updateStatsDisplay();
+
+    function loadKpssStorage() {
+      try {
+        const raw = localStorage.getItem('kpss_all_progress');
+        if (raw) kpssAllProgress = JSON.parse(raw);
+      } catch (e) {
+        kpssAllProgress = {};
+      }
+      if (!kpssAllProgress[currentKpssUser]) {
+        kpssAllProgress[currentKpssUser] = {
+          currentIndex: 0,
+          repeatQueue: [],
+          correctCount: 0,
+          wrongCount: 0
+        };
+      }
+    }
+
+    function saveKpssStorage() {
+      if (!kpssAllProgress[currentKpssUser]) kpssAllProgress[currentKpssUser] = {};
+      kpssAllProgress[currentKpssUser].currentIndex = currentIndex;
+      kpssAllProgress[currentKpssUser].repeatQueue = repeatQueue;
+      kpssAllProgress[currentKpssUser].correctCount = correctCount;
+      kpssAllProgress[currentKpssUser].wrongCount = wrongCount;
+
+      localStorage.setItem('kpss_all_progress', JSON.stringify(kpssAllProgress));
+      localStorage.setItem('kpss_user_email', currentKpssUser);
+
+      const now = new Date();
+      const timeStr = now.toTimeString().split(' ')[0];
+      const autoEl = document.getElementById('lbl-autosave-kpss');
+      if (autoEl) autoEl.textContent = `💾 Kaydedildi (${timeStr})`;
+    }
+
+    function updateProfileBadges() {
+      const display = currentKpssUser === 'misafir@kpss.gov.tr' ? 'Giriş / Kayıt' : currentKpssUser;
+      document.getElementById('lbl-profile-name').textContent = display.length > 20 ? display.substring(0, 18) + '...' : display;
+      document.getElementById('mob-lbl-profile').textContent = currentKpssUser === 'misafir@kpss.gov.tr' ? 'Giriş' : 'Profil';
+    }
+
+    function openProfileModal() {
+      document.getElementById('kpss-user-email-input').value = currentKpssUser === 'misafir@kpss.gov.tr' ? '' : currentKpssUser;
+      document.getElementById('kpss-profile-modal').style.display = 'flex';
+    }
+
+    function closeProfileModal() {
+      document.getElementById('kpss-profile-modal').style.display = 'none';
+    }
+
+    function saveKpssUserEmail() {
+      const email = document.getElementById('kpss-user-email-input').value.trim().toLowerCase();
+      if (!email || !email.includes('@')) {
+        alert("Lütfen geçerli bir e-posta adresi giriniz.");
+        return;
+      }
+      currentKpssUser = email;
+      loadKpssStorage();
+
+      currentIndex = kpssAllProgress[currentKpssUser]?.currentIndex || 0;
+      repeatQueue = kpssAllProgress[currentKpssUser]?.repeatQueue || [];
+      correctCount = kpssAllProgress[currentKpssUser]?.correctCount || 0;
+      wrongCount = kpssAllProgress[currentKpssUser]?.wrongCount || 0;
+
+      saveKpssStorage();
+      updateProfileBadges();
+      updateStatsDisplay();
+      loadKpssQuestion();
+      closeProfileModal();
+      alert(`✓ Başarıyla giriş yapıldı: ${currentKpssUser}`);
+    }
+
+    function resetKpssProgress() {
+      if (confirm(`Tüm soru ilerlemesini sıfırlayıp baştan başlamak istediğinize emin misiniz?`)) {
+        currentIndex = 0;
+        repeatQueue = [];
+        correctCount = 0;
+        wrongCount = 0;
+        saveKpssStorage();
+        updateStatsDisplay();
+        loadKpssQuestion();
+        if (document.getElementById('kpss-profile-modal').style.display === 'flex') closeProfileModal();
+        alert("✓ İlerlemeniz sıfırlandı.");
+      }
+    }
+
+    function updateStatsDisplay() {
+      document.getElementById('stat-solved-total').textContent = correctCount + wrongCount;
+      document.getElementById('stat-correct-count').textContent = correctCount;
+      document.getElementById('stat-wrong-count').textContent = wrongCount;
+      document.getElementById('stat-repeat-count').textContent = repeatQueue.length;
+    }
+
+    function switchView(viewId) {
+      document.querySelectorAll('.view-pane').forEach(p => p.style.display = 'none');
+      document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.mobile-tab-btn').forEach(b => b.classList.remove('active'));
+
+      if (viewId === 'exam') {
+        document.getElementById('view-pane-exam').style.display = 'block';
+        document.getElementById('tab-btn-exam').classList.add('active');
+        document.getElementById('mob-btn-exam').classList.add('active');
+      } else if (viewId === 'mnemonics') {
+        document.getElementById('view-pane-mnemonics').style.display = 'block';
+        document.getElementById('tab-btn-mnemonics').classList.add('active');
+        document.getElementById('mob-btn-mnemonics').classList.add('active');
+      } else if (viewId === 'stream') {
+        document.getElementById('view-pane-stream').style.display = 'block';
+        document.getElementById('tab-btn-stream').classList.add('active');
+        document.getElementById('mob-btn-stream').classList.add('active');
+        renderStreamKpss();
+      } else if (viewId === 'academy') {
+        document.getElementById('view-pane-academy').style.display = 'block';
+        document.getElementById('tab-btn-academy').classList.add('active');
+        document.getElementById('mob-btn-academy').classList.add('active');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function loadKpssQuestion() {
+      answered = false;
+      document.getElementById('lbl-exam-explanation').style.display = 'none';
+
+      let q;
+      if (repeatQueue.length > 0 && Math.random() > 0.4) {
+        q = repeatQueue[0];
+      } else {
+        q = KPSS_QUESTION_BANK[currentIndex] || KPSS_QUESTION_BANK[0];
+      }
+
+      document.getElementById('lbl-exam-period').textContent = `${q.period} — Soru #${q.id}`;
+      document.getElementById('lbl-exam-topic').textContent = `${q.topic} (${q.subTopic || ''})`;
+      document.getElementById('lbl-exam-text').textContent = q.question;
+
+      const optsList = document.getElementById('lbl-exam-options');
+      optsList.innerHTML = '';
+
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+
+      q.options.forEach((optText, i) => {
+        const row = document.createElement('div');
+        row.className = 'opt-btn';
+        const cleanText = optText.replace(/^[A-E]\)\s*/i, '');
+
+        row.innerHTML = `
+          <div class="opt-circle">${letters[i] || (i+1)}</div>
+          <div style="flex:1;">${escapeHtml(cleanText)}</div>
+        `;
+
+        row.onclick = () => selectKpssOption(q, i, row);
+        optsList.appendChild(row);
+      });
+    }
+
+    function selectKpssOption(q, selectedIndex, rowElement) {
+      if (answered) return;
+      answered = true;
+
+      const allRows = document.querySelectorAll('.opt-btn');
+      const isCorrect = selectedIndex === q.answer;
+
+      if (isCorrect) {
+        rowElement.classList.add('correct');
+        correctCount++;
+        repeatQueue = repeatQueue.filter(item => item.id !== q.id);
+      } else {
+        rowElement.classList.add('wrong');
+        wrongCount++;
+        if (allRows[q.answer]) allRows[q.answer].classList.add('correct');
+
+        if (!repeatQueue.some(item => item.id === q.id)) {
+          repeatQueue.push(q);
+        }
+      }
+
+      document.getElementById('exp-content').textContent = q.explanation;
+      document.getElementById('exp-ref').textContent = `ÖSYM Müfredat Referansı: ${q.lawRef}`;
+      document.getElementById('lbl-exam-explanation').style.display = 'flex';
+
+      updateStatsDisplay();
+      saveKpssStorage();
+    }
+
+    function nextKpssQuestion() {
+      currentIndex = (currentIndex + 1) % KPSS_QUESTION_BANK.length;
+      saveKpssStorage();
+      loadKpssQuestion();
+    }
+
+    function speakQuestion() {
+      const q = KPSS_QUESTION_BANK[currentIndex];
+      if (q && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+        const ut = new SpeechSynthesisUtterance(q.question);
+        ut.lang = 'tr-TR';
+        window.speechSynthesis.speak(ut);
+      }
+    }
+
+    // Mnemonics
+    function renderKpssMnemonics() {
+      const container = document.getElementById('kpss-mnemonics-list');
+      container.innerHTML = '';
+
+      KPSS_MNEMONICS.forEach(m => {
+        const box = document.createElement('div');
+        box.className = 'schema-card';
+        box.innerHTML = `
+          <h2>${escapeHtml(m.title)}</h2>
+          <div style="background:var(--bg-card); padding:8px 12px; border-radius:6px; font-size:12.5px; color:var(--accent-gold); font-weight:700;">
+            ÖZET ŞİFRE: ${escapeHtml(m.code)}
+          </div>
+          ${m.visualBox || ''}
+          <div style="font-size:13px; color:var(--text-muted); line-height:1.5;">${m.explanation}</div>
+        `;
+        container.appendChild(box);
+      });
+    }
+
+    // Stream
+    function renderStreamKpss() {
+      const container = document.getElementById('stream-kpss-list');
+      container.innerHTML = '';
+
+      const tVal = document.getElementById('stream-topic-sel').value;
+
+      const filtered = KPSS_QUESTION_BANK.filter(q => {
+        if (tVal !== 'all' && q.topic !== tVal) return false;
+        return true;
+      });
+
+      filtered.forEach(q => {
+        const item = document.createElement('div');
+        item.className = 'schema-card';
+        item.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-main); padding-bottom:6px;">
+            <span style="font-family:var(--font-mono); font-size:11.5px; color:var(--accent-gold); font-weight:700;">${q.period} - Soru #${q.id}</span>
+            <span style="font-size:11.5px; color:var(--text-muted);">${q.topic} / ${q.subTopic}</span>
+          </div>
+          <div style="font-size:14.5px; font-weight:600; color:#fff; line-height:1.5;">${escapeHtml(q.question)}</div>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            ${q.options.map((opt, i) => `<div style="background:var(--bg-card); padding:8px 12px; border-radius:4px; font-size:13px; ${i === q.answer ? 'border-left:3px solid var(--accent-emerald); color:#fff; font-weight:600;' : 'color:var(--text-muted);'}">${escapeHtml(opt)}</div>`).join('')}
+          </div>
+          <div style="font-size:12px; color:var(--text-muted); line-height:1.5; background:#0b1329; padding:8px 10px; border-radius:4px;">
+            <strong>Gerekçeli Çözüm:</strong> ${escapeHtml(q.explanation)}
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    // Academy
+    function renderKpssAcademy() {
+      const container = document.getElementById('kpss-academy-cards');
+      container.innerHTML = '';
+
+      KPSS_TOPICS.forEach(t => {
+        const card = document.createElement('div');
+        card.className = 'schema-pill';
+        card.style.cursor = 'pointer';
+        card.onclick = () => openKpssModal(t);
+
+        card.innerHTML = `
+          <strong>${t.icon} ${escapeHtml(t.title)}</strong>
+          <span style="color:var(--text-muted); font-size:12px; margin-top:2px;">${escapeHtml(t.summary)}</span>
+          <span style="color:var(--accent-gold); font-weight:600; margin-top:4px;">Ders Notunu İncele →</span>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function openKpssModal(t) {
+      document.getElementById('kpss-modal-title').textContent = `${t.icon} ${t.title}`;
+      document.getElementById('kpss-modal-body').innerHTML = t.content;
+      document.getElementById('kpss-modal').style.display = 'flex';
+    }
+
+    function closeKpssModal() {
+      document.getElementById('kpss-modal').style.display = 'none';
+    }
+
+    function escapeHtml(s) {
+      return (s || '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
+    }
+  </script>
+</body>
+</html>
