@@ -3,7 +3,7 @@
  * Tarih, Coğrafya ve Vatandaşlık Derslerinin Efsanevi Kısaltmaları
  */
 
-const KPSS_MNEMONICS = [
+var KPSS_MNEMONICS = [
   // TARİH ŞİFRELERİ
   {
     id: "m_tarih_balkan",
@@ -165,3 +165,5 @@ const KPSS_MNEMONICS = [
     explanation: `TBMM toplam 600 milletvekilinden oluşur. Anayasa değişikliği teklifi için en az 200 vekil (1/3) imzası gerekir.`
   }
 ];
+
+if (typeof window !== "undefined") { window.KPSS_MNEMONICS = KPSS_MNEMONICS; }

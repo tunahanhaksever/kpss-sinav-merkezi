@@ -225,6 +225,9 @@
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 6px;
+      max-height: 420px;
+      overflow-y: auto;
+      padding-right: 4px;
     }
     .q-matrix-btn {
       background: var(--bg-surface);
@@ -844,32 +847,49 @@
   <script src="./topics.js"></script>
   <script src="./mnemonics.js"></script>
   <script>
-    let currentKpssUser = localStorage.getItem('kpss_user_email') || 'misafir@kpss.gov.tr';
-    let kpssAllProgress = {};
+    // All global state variables declared first
+    var currentKpssUser = localStorage.getItem('kpss_user_email') || 'misafir@kpss.gov.tr';
+    var kpssAllProgress = {};
+    var remainingSeconds = 130 * 60;
+    var timerInterval = null;
+    var currentIndex = 0;
+    var repeatQueue = [];
+    var userAnswers = {};
+    var correctCount = 0;
+    var wrongCount = 0;
+    var answered = false;
+    var learnAnswered = false;
 
-    // 130 minutes ÖSYM Exam countdown timer (7800 seconds)
-    let remainingSeconds = 130 * 60;
-    let timerInterval = null;
-
+    // Load storage
     loadStorageEngine();
+    currentIndex = kpssAllProgress[currentKpssUser]?.currentIndex || 0;
+    repeatQueue = kpssAllProgress[currentKpssUser]?.repeatQueue || [];
+    userAnswers = kpssAllProgress[currentKpssUser]?.userAnswers || {};
+    correctCount = kpssAllProgress[currentKpssUser]?.correctCount || 0;
+    wrongCount = kpssAllProgress[currentKpssUser]?.wrongCount || 0;
 
-    let currentIndex = kpssAllProgress[currentKpssUser]?.currentIndex || 0;
-    let repeatQueue = kpssAllProgress[currentKpssUser]?.repeatQueue || [];
-    let userAnswers = kpssAllProgress[currentKpssUser]?.userAnswers || {};
-    let correctCount = kpssAllProgress[currentKpssUser]?.correctCount || 0;
-    let wrongCount = kpssAllProgress[currentKpssUser]?.wrongCount || 0;
-    let answered = false;
+    // Safe execution
+    function initApplication() {
+      try {
+        startExamTimer();
+        updateProfileBadges();
+        renderMatrixGrid();
+        loadQuestionCard();
+        renderLearnTopicMode();
+        renderMnemonics();
+        renderAcademy();
+        renderStream();
+        updateStatsDisplay();
+      } catch (err) {
+        console.error("Initialization error:", err);
+      }
+    }
 
-    // Initialize
-    startExamTimer();
-    updateProfileBadges();
-    renderMatrixGrid();
-    loadQuestionCard();
-    renderLearnTopicMode();
-    renderMnemonics();
-    renderAcademy();
-    renderStream();
-    updateStatsDisplay();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initApplication);
+    } else {
+      initApplication();
+    }
 
     function startExamTimer() {
       if (timerInterval) clearInterval(timerInterval);
@@ -878,7 +898,10 @@
           remainingSeconds--;
           const mins = Math.floor(remainingSeconds / 60);
           const secs = remainingSeconds % 60;
-          document.getElementById('exam-countdown-timer').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+          const timerEl = document.getElementById('exam-countdown-timer');
+          if (timerEl) {
+            timerEl.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+          }
         }
       }, 1000);
     }
@@ -920,21 +943,27 @@
 
     function updateProfileBadges() {
       const display = currentKpssUser === 'misafir@kpss.gov.tr' ? 'Giriş / Kayıt' : currentKpssUser;
-      document.getElementById('lbl-profile-user').textContent = display.length > 20 ? display.substring(0, 18) + '...' : display;
-      document.getElementById('mob-lbl-profile').textContent = currentKpssUser === 'misafir@kpss.gov.tr' ? 'Giriş' : 'Profil';
+      const userEl = document.getElementById('lbl-profile-user');
+      if (userEl) userEl.textContent = display.length > 20 ? display.substring(0, 18) + '...' : display;
+      const mobEl = document.getElementById('mob-lbl-profile');
+      if (mobEl) mobEl.textContent = currentKpssUser === 'misafir@kpss.gov.tr' ? 'Giriş' : 'Profil';
     }
 
     function openProfileModal() {
-      document.getElementById('academic-user-email-input').value = currentKpssUser === 'misafir@kpss.gov.tr' ? '' : currentKpssUser;
-      document.getElementById('profile-modal').style.display = 'flex';
+      const input = document.getElementById('academic-user-email-input');
+      if (input) input.value = currentKpssUser === 'misafir@kpss.gov.tr' ? '' : currentKpssUser;
+      const modal = document.getElementById('profile-modal');
+      if (modal) modal.style.display = 'flex';
     }
 
     function closeProfileModal() {
-      document.getElementById('profile-modal').style.display = 'none';
+      const modal = document.getElementById('profile-modal');
+      if (modal) modal.style.display = 'none';
     }
 
     function saveAcademicEmail() {
-      const email = document.getElementById('academic-user-email-input').value.trim().toLowerCase();
+      const input = document.getElementById('academic-user-email-input');
+      const email = (input?.value || '').trim().toLowerCase();
       if (!email || !email.includes('@')) {
         alert("Lütfen geçerli bir e-posta adresi giriniz.");
         return;
@@ -968,20 +997,26 @@
         updateStatsDisplay();
         renderMatrixGrid();
         loadQuestionCard();
-        if (document.getElementById('profile-modal').style.display === 'flex') closeProfileModal();
+        closeProfileModal();
         alert("✓ İlerlemeniz sıfırlandı.");
       }
     }
 
     function updateStatsDisplay() {
-      document.getElementById('side-solved').textContent = correctCount + wrongCount;
-      document.getElementById('side-correct').textContent = correctCount;
-      document.getElementById('side-wrong').textContent = wrongCount;
-      document.getElementById('side-repeat').textContent = repeatQueue.length;
+      const sideSolved = document.getElementById('side-solved');
+      const sideCorrect = document.getElementById('side-correct');
+      const sideWrong = document.getElementById('side-wrong');
+      const sideRepeat = document.getElementById('side-repeat');
+      const sidePct = document.getElementById('sidebar-pct');
+
+      if (sideSolved) sideSolved.textContent = correctCount + wrongCount;
+      if (sideCorrect) sideCorrect.textContent = correctCount;
+      if (sideWrong) sideWrong.textContent = wrongCount;
+      if (sideRepeat) sideRepeat.textContent = repeatQueue.length;
 
       const total = correctCount + wrongCount;
       const rate = total > 0 ? Math.round((correctCount / total) * 100) : 0;
-      document.getElementById('sidebar-pct').textContent = `%${rate}`;
+      if (sidePct) sidePct.textContent = `%${rate}`;
     }
 
     function switchAcademicView(viewId) {
@@ -991,33 +1026,34 @@
 
       if (viewId === 'exam') {
         document.getElementById('pane-exam').style.display = 'block';
-        document.getElementById('btn-tab-exam').classList.add('active');
-        document.getElementById('mob-btn-exam').classList.add('active');
+        document.getElementById('btn-tab-exam')?.classList.add('active');
+        document.getElementById('mob-btn-exam')?.classList.add('active');
       } else if (viewId === 'learn') {
         document.getElementById('pane-learn').style.display = 'block';
-        document.getElementById('btn-tab-learn').classList.add('active');
-        document.getElementById('mob-btn-learn').classList.add('active');
+        document.getElementById('btn-tab-learn')?.classList.add('active');
+        document.getElementById('mob-btn-learn')?.classList.add('active');
         renderLearnTopicMode();
       } else if (viewId === 'mnemonics') {
         document.getElementById('pane-mnemonics').style.display = 'block';
-        document.getElementById('btn-tab-mnemonics').classList.add('active');
-        document.getElementById('mob-btn-mnemonics').classList.add('active');
+        document.getElementById('btn-tab-mnemonics')?.classList.add('active');
+        document.getElementById('mob-btn-mnemonics')?.classList.add('active');
       } else if (viewId === 'stream') {
         document.getElementById('pane-stream').style.display = 'block';
-        document.getElementById('btn-tab-stream').classList.add('active');
-        document.getElementById('mob-btn-stream').classList.add('active');
+        document.getElementById('btn-tab-stream')?.classList.add('active');
+        document.getElementById('mob-btn-stream')?.classList.add('active');
       } else if (viewId === 'academy') {
         document.getElementById('pane-academy').style.display = 'block';
-        document.getElementById('btn-tab-academy').classList.add('active');
-        document.getElementById('mob-btn-academy').classList.add('active');
+        document.getElementById('btn-tab-academy')?.classList.add('active');
+        document.getElementById('mob-btn-academy')?.classList.add('active');
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function getFilteredQuestions() {
+      const bank = (typeof KPSS_QUESTION_BANK !== 'undefined' && Array.isArray(KPSS_QUESTION_BANK)) ? KPSS_QUESTION_BANK : [];
       const subj = document.getElementById('exam-subject-filter')?.value || 'all';
-      if (subj === 'all') return KPSS_QUESTION_BANK;
-      return KPSS_QUESTION_BANK.filter(q => q.topic === subj);
+      if (subj === 'all') return bank;
+      return bank.filter(q => q.topic === subj);
     }
 
     function onSubjectFilterChange() {
@@ -1028,6 +1064,7 @@
 
     function renderMatrixGrid() {
       const container = document.getElementById('matrix-grid');
+      if (!container) return;
       container.innerHTML = '';
 
       const pool = getFilteredQuestions();
@@ -1054,13 +1091,16 @@
 
     function loadQuestionCard() {
       answered = false;
-      document.getElementById('q-solution-drawer').style.display = 'none';
-      document.getElementById('current-question-card').classList.remove('shake');
+      const solDrawer = document.getElementById('q-solution-drawer');
+      const deskCard = document.getElementById('current-question-card');
+      if (solDrawer) solDrawer.style.display = 'none';
+      if (deskCard) deskCard.classList.remove('shake');
 
       const pool = getFilteredQuestions();
-      let q;
+      if (!pool || pool.length === 0) return;
 
-      // Persistence Repeat loop: If user made a mistake in this topic, force it
+      let q;
+      // Persistence Repeat loop
       const topicRepeat = repeatQueue.filter(item => pool.some(p => p.id === item.id));
       if (topicRepeat.length > 0 && Math.random() > 0.4) {
         q = topicRepeat[0];
@@ -1073,11 +1113,12 @@
       document.getElementById('q-header-text').textContent = q.question;
 
       const optsList = document.getElementById('q-options-wrap');
+      if (!optsList) return;
       optsList.innerHTML = '';
 
       const letters = ['A', 'B', 'C', 'D', 'E'];
 
-      q.options.forEach((optText, i) => {
+      (q.options || []).forEach((optText, i) => {
         const row = document.createElement('div');
         row.className = 'option-pill';
         const cleanText = optText.replace(/^[A-E]\)\s*/i, '');
@@ -1110,7 +1151,7 @@
       } else {
         rowElement.classList.add('wrong');
         wrongCount++;
-        document.getElementById('current-question-card').classList.add('shake');
+        document.getElementById('current-question-card')?.classList.add('shake');
         
         if (allRows[q.answer]) allRows[q.answer].classList.add('correct');
 
@@ -1120,11 +1161,17 @@
       }
 
       // Populate Kilit Nokta & Sınav Tuzağı
-      document.getElementById('q-box-keypoint').innerHTML = q.keyPoint || '📌 KİLİT BİLGİ: ÖSYM bu tarz öncüllü sorularda kavram ayrımını test eder.';
-      document.getElementById('q-box-trap').innerHTML = q.trapWarning || '⚠️ ÖSYM TUZAĞI: Seçeneklerdeki benzer ifadeleri dikkatle eleyiniz.';
-      document.getElementById('q-solution-text').innerHTML = q.explanation.replace(/\n/g, '<br>');
-      document.getElementById('q-solution-law').textContent = `ÖSYM Müfredat Referansı: ${q.lawRef}`;
-      document.getElementById('q-solution-drawer').style.display = 'flex';
+      const kpEl = document.getElementById('q-box-keypoint');
+      const trEl = document.getElementById('q-box-trap');
+      const solEl = document.getElementById('q-solution-text');
+      const lawEl = document.getElementById('q-solution-law');
+      const drawerEl = document.getElementById('q-solution-drawer');
+
+      if (kpEl) kpEl.innerHTML = q.keyPoint || '📌 KİLİT BİLGİ: ÖSYM bu tarz öncüllü sorularda kavram ayrımını test eder.';
+      if (trEl) trEl.innerHTML = q.trapWarning || '⚠️ ÖSYM TUZAĞI: Seçeneklerdeki benzer ifadeleri dikkatle eleyiniz.';
+      if (solEl) solEl.innerHTML = (q.explanation || '').replace(/\n/g, '<br>');
+      if (lawEl) lawEl.textContent = `ÖSYM Müfredat Referansı: ${q.lawRef || 'KPSS GY-GK'}`;
+      if (drawerEl) drawerEl.style.display = 'flex';
 
       updateStatsDisplay();
       renderMatrixGrid();
@@ -1133,6 +1180,7 @@
 
     function nextAcademicQuestion() {
       const pool = getFilteredQuestions();
+      if (!pool || pool.length === 0) return;
       currentIndex = (currentIndex + 1) % pool.length;
       saveStorageEngine();
       loadQuestionCard();
@@ -1150,47 +1198,54 @@
     }
 
     // ================= VIEW 2: KONU ÖĞREN & ZORLAMA ARENASI =================
-    let learnAnswered = false;
-
     function renderLearnTopicMode() {
-      const selectIdx = parseInt(document.getElementById('learn-topic-select').value) || 0;
-      const q = KPSS_QUESTION_BANK[selectIdx] || KPSS_QUESTION_BANK[0];
       learnAnswered = false;
+      const bank = (typeof KPSS_QUESTION_BANK !== 'undefined' && Array.isArray(KPSS_QUESTION_BANK)) ? KPSS_QUESTION_BANK : [];
+      const topicsList = (typeof KPSS_TOPICS !== 'undefined' && Array.isArray(KPSS_TOPICS)) ? KPSS_TOPICS : [];
+      
+      const selectIdx = parseInt(document.getElementById('learn-topic-select')?.value) || 0;
+      const q = bank[selectIdx] || bank[0];
+      if (!q) return;
 
-      // Find matching topic summary from topics.js
-      const matchedTopic = KPSS_TOPICS.find(t => t.id === q.topic.toLowerCase()) || KPSS_TOPICS[0];
-
-      document.getElementById('learn-lesson-summary-box').innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-subtle); padding-bottom:8px; margin-bottom:10px;">
-          <strong style="color:var(--accent-brass); font-size:15px;">📖 ${matchedTopic.icon} ${q.topic} — ${q.subTopic}</strong>
-          <span style="font-family:var(--font-mono); font-size:11.5px; color:var(--text-muted);">${q.period}</span>
-        </div>
-        <p style="margin-bottom:8px;">${q.keyPoint}</p>
-        <p style="color:var(--accent-ruby);">${q.trapWarning}</p>
-      `;
+      const summaryBox = document.getElementById('learn-lesson-summary-box');
+      if (summaryBox) {
+        summaryBox.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-subtle); padding-bottom:8px; margin-bottom:10px;">
+            <strong style="color:var(--accent-brass); font-size:15px;">📖 ${q.topic} — ${q.subTopic || 'Konu Özeti'}</strong>
+            <span style="font-family:var(--font-mono); font-size:11.5px; color:var(--text-muted);">${q.period}</span>
+          </div>
+          <p style="margin-bottom:8px;">${q.keyPoint || 'Konu Kilit Noktası'}</p>
+          <p style="color:var(--accent-ruby);">${q.trapWarning || 'ÖSYM Sınav Tuzağı'}</p>
+        `;
+      }
 
       // Render Checkpoint Question
-      document.getElementById('learn-cp-question').textContent = q.question;
+      const qEl = document.getElementById('learn-cp-question');
+      if (qEl) qEl.textContent = q.question;
+
       const cpOptions = document.getElementById('learn-cp-options');
-      cpOptions.innerHTML = '';
-      document.getElementById('learn-cp-feedback').style.display = 'none';
-      document.getElementById('learn-checkpoint-card').classList.remove('shake');
+      if (cpOptions) {
+        cpOptions.innerHTML = '';
+        const feedEl = document.getElementById('learn-cp-feedback');
+        if (feedEl) feedEl.style.display = 'none';
+        document.getElementById('learn-checkpoint-card')?.classList.remove('shake');
 
-      const letters = ['A', 'B', 'C', 'D', 'E'];
+        const letters = ['A', 'B', 'C', 'D', 'E'];
 
-      q.options.forEach((optText, i) => {
-        const row = document.createElement('div');
-        row.className = 'option-pill';
-        const cleanText = optText.replace(/^[A-E]\)\s*/i, '');
+        (q.options || []).forEach((optText, i) => {
+          const row = document.createElement('div');
+          row.className = 'option-pill';
+          const cleanText = optText.replace(/^[A-E]\)\s*/i, '');
 
-        row.innerHTML = `
-          <div class="opt-key">${letters[i] || (i+1)}</div>
-          <div style="flex:1;">${escapeHtml(cleanText)}</div>
-        `;
+          row.innerHTML = `
+            <div class="opt-key">${letters[i] || (i+1)}</div>
+            <div style="flex:1;">${escapeHtml(cleanText)}</div>
+          `;
 
-        row.onclick = () => selectLearnCheckpointOption(q, i, row);
-        cpOptions.appendChild(row);
-      });
+          row.onclick = () => selectLearnCheckpointOption(q, i, row);
+          cpOptions.appendChild(row);
+        });
+      }
     }
 
     function selectLearnCheckpointOption(q, selectedIndex, rowElement) {
@@ -1203,29 +1258,33 @@
 
       if (isCorrect) {
         rowElement.classList.add('correct');
-        feedBox.style.display = 'block';
-        feedBox.style.background = 'rgba(16, 185, 129, 0.2)';
-        feedBox.style.border = '1.5px solid var(--accent-sage)';
-        feedBox.style.color = '#fff';
-        feedBox.innerHTML = `
-          <strong>✅ TEBRİKLER! Konuyu tam kavradınız.</strong><br>
-          ${q.explanation.replace(/\n/g, '<br>')}
-        `;
+        if (feedBox) {
+          feedBox.style.display = 'block';
+          feedBox.style.background = 'rgba(16, 185, 129, 0.2)';
+          feedBox.style.border = '1.5px solid var(--accent-sage)';
+          feedBox.style.color = '#fff';
+          feedBox.innerHTML = `
+            <strong>✅ TEBRİKLER! Konuyu tam kavradınız.</strong><br>
+            ${(q.explanation || '').replace(/\n/g, '<br>')}
+          `;
+        }
         repeatQueue = repeatQueue.filter(item => item.id !== q.id);
       } else {
         rowElement.classList.add('wrong');
-        document.getElementById('learn-checkpoint-card').classList.add('shake');
+        document.getElementById('learn-checkpoint-card')?.classList.add('shake');
         if (allRows[q.answer]) allRows[q.answer].classList.add('correct');
 
-        feedBox.style.display = 'block';
-        feedBox.style.background = 'rgba(225, 29, 72, 0.2)';
-        feedBox.style.border = '1.5px solid var(--accent-ruby)';
-        feedBox.style.color = '#fecdd3';
-        feedBox.innerHTML = `
-          <strong>⚠️ YANLIŞ CEVAP! Bu konu Zorlama & Tekrar Listenize eklendi!</strong><br>
-          ${q.keyPoint}<br>
-          <em>${q.trapWarning}</em>
-        `;
+        if (feedBox) {
+          feedBox.style.display = 'block';
+          feedBox.style.background = 'rgba(225, 29, 72, 0.2)';
+          feedBox.style.border = '1.5px solid var(--accent-ruby)';
+          feedBox.style.color = '#fecdd3';
+          feedBox.innerHTML = `
+            <strong>⚠️ YANLIŞ CEVAP! Bu konu Zorlama & Tekrar Listenize eklendi!</strong><br>
+            ${q.keyPoint || ''}<br>
+            <em>${q.trapWarning || ''}</em>
+          `;
+        }
 
         if (!repeatQueue.some(item => item.id === q.id)) {
           repeatQueue.push(q);
@@ -1239,9 +1298,12 @@
     // Mnemonics
     function renderMnemonics() {
       const container = document.getElementById('kpss-mnemonic-container');
+      if (!container) return;
       container.innerHTML = '';
 
-      KPSS_MNEMONICS.forEach(m => {
+      const list = (typeof KPSS_MNEMONICS !== 'undefined' && Array.isArray(KPSS_MNEMONICS)) ? KPSS_MNEMONICS : [];
+
+      list.forEach(m => {
         const box = document.createElement('div');
         box.className = 'schema-card-box';
         box.innerHTML = `
@@ -1259,9 +1321,12 @@
     // Stream
     function renderStream() {
       const container = document.getElementById('kpss-stream-container');
+      if (!container) return;
       container.innerHTML = '';
 
-      KPSS_QUESTION_BANK.forEach(q => {
+      const bank = (typeof KPSS_QUESTION_BANK !== 'undefined' && Array.isArray(KPSS_QUESTION_BANK)) ? KPSS_QUESTION_BANK : [];
+
+      bank.forEach(q => {
         const item = document.createElement('div');
         item.className = 'schema-card-box';
         item.innerHTML = `
@@ -1271,7 +1336,7 @@
           </div>
           <div style="font-size:15px; font-weight:600; color:#fff; line-height:1.6; white-space: pre-line;">${escapeHtml(q.question)}</div>
           <div style="display:flex; flex-direction:column; gap:6px;">
-            ${q.options.map((opt, i) => `<div style="background:var(--bg-surface); padding:10px 14px; border-radius:6px; font-size:13.5px; ${i === q.answer ? 'border-left:3px solid var(--accent-sage); color:#fff; font-weight:700;' : 'color:var(--text-muted);'}">${escapeHtml(opt)}</div>`).join('')}
+            ${(q.options || []).map((opt, i) => `<div style="background:var(--bg-surface); padding:10px 14px; border-radius:6px; font-size:13.5px; ${i === q.answer ? 'border-left:3px solid var(--accent-sage); color:#fff; font-weight:700;' : 'color:var(--text-muted);'}">${escapeHtml(opt)}</div>`).join('')}
           </div>
           <div style="font-size:12.5px; color:var(--text-muted); line-height:1.5; background:#090d16; padding:10px 12px; border-radius:6px;">
             <strong>ÖSYM Çözüm Analizi:</strong> ${escapeHtml(q.explanation)}
@@ -1284,9 +1349,12 @@
     // Academy
     function renderAcademy() {
       const container = document.getElementById('kpss-academy-container');
+      if (!container) return;
       container.innerHTML = '';
 
-      KPSS_TOPICS.forEach(t => {
+      const list = (typeof KPSS_TOPICS !== 'undefined' && Array.isArray(KPSS_TOPICS)) ? KPSS_TOPICS : [];
+
+      list.forEach(t => {
         const card = document.createElement('div');
         card.className = 'schema-item-pill';
         card.style.cursor = 'pointer';
@@ -1302,13 +1370,17 @@
     }
 
     function openAcademicModal(t) {
-      document.getElementById('academic-modal-title').textContent = `${t.icon} ${t.title}`;
-      document.getElementById('academic-modal-body').innerHTML = t.content;
-      document.getElementById('academic-modal').style.display = 'flex';
+      const titleEl = document.getElementById('academic-modal-title');
+      const bodyEl = document.getElementById('academic-modal-body');
+      const modalEl = document.getElementById('academic-modal');
+      if (titleEl) titleEl.textContent = `${t.icon} ${t.title}`;
+      if (bodyEl) bodyEl.innerHTML = t.content;
+      if (modalEl) modalEl.style.display = 'flex';
     }
 
     function closeAcademicModal() {
-      document.getElementById('academic-modal').style.display = 'none';
+      const modalEl = document.getElementById('academic-modal');
+      if (modalEl) modalEl.style.display = 'none';
     }
 
     function escapeHtml(s) {
