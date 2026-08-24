@@ -1,10 +1,10 @@
 /**
- * KPSS Akademisi — ÖSYM Standartlarında Gerçek Öncüllü Soru Havuzu
- * Tarih, Coğrafya, Vatandaşlık, Türkçe, Matematik & Güncel Bilgiler
+ * KPSS Akademisi — Genişletilmiş GY-GK Soru Külliyatı & Kilit Noktalar Arşivi
+ * ÖSYM Lisans, Önlisans & Ortaöğretim Müfredatı (Tarih, Coğrafya, Vatandaşlık, Türkçe, Matematik, Güncel)
  */
 
 const KPSS_QUESTION_BANK = [
-  // TARİH — ÖNCÜLLÜ SORULAR
+  // ================= TARİH SORULARI =================
   {
     id: 1,
     period: "2024 KPSS Lisans",
@@ -20,8 +20,10 @@ const KPSS_QUESTION_BANK = [
       "E) I, II ve III"
     ],
     answer: 2,
-    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **I. Öncül (Doğru):** Ülke hanedanın ortak malı sayıldığı için her erkek hanedan üyesi tahtta hak iddia etmiş ve bu durum doğrudan taht kavgalarına yol açmıştır.\n• **II. Öncül (Doğru):** Kut anlayışının kan bağıyla tüm erkek çocuklara geçtiğine inanılması, kimin tahta geçeceğinin kesin olmamasına (veraset belirsizliği) neden olmuştur.\n• **III. Öncül (Yanlış):** Töre kurallarına uyulması hükümdarın keyfi yönetimini sınırlandıran, adaleti sağlayan bir unsurdur; parçalanmaya yol açmaz.`,
-    lawRef: "ÖSYM KPSS Tarih — Türk Devlet Teşkilatı ve Veraset Sistemi"
+    keyPoint: "📌 KİLİT BİLGİ: Kut inancı ve hanedan ortak mülkiyeti 'Veraset Belirsizliği' yaratır ve taht kavgalarına neden olur. Töre ise hükümdarın yetkilerini sınırlandırarak adaleti sağlar.",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: Töre yıkılışa değil, devlet düzeninin korunmasına hizmet eder.",
+    explanation: `I. ve II. öncüller doğrudan veraset krizine ve parçalanmaya yol açmıştır. Töre kuralları ise kanun üstünlüğünü simgeler.`,
+    lawRef: "ÖSYM KPSS Tarih — Türk Devlet Teşkilatı"
   },
   {
     id: 2,
@@ -29,7 +31,7 @@ const KPSS_QUESTION_BANK = [
     topic: "Tarih",
     subTopic: "Kurtuluş Savaşı Kongreler Dönemi",
     type: "oncullu",
-    question: `Mustafa Kemal Paşa'nın liderliğinde toplanan Erzurum Kongresi'nde alınan;\n\nI. 'Milli sınırlar içinde vatan bir bütündür, bölünemez.'\nII. 'Kuva-yı Millîye'yi amil, irade-i millîyeyi hakim kılmak esastır.'\nIII. 'Manda ve himaye kabul edilemez.'\n\nkararlarından hangileri **milli egemenliğe (halk iradesine)** dayalı yeni bir devlet düzeninin kurulacağının açık bir göstergesidir?`,
+    question: `Mustafa Kemal Paşa'nın liderliğinde toplanan Erzurum Kongresi'nde alınan;\n\nI. 'Milli sınırlar içinde vatan bir bütündür, bölünemez.'\nII. 'Kuva-yı Millîye'yi amil, irade-i millîyeyi hakim kılmak esastır.'\nIII. 'Manda ve himaye kabul edilemez.'\n\nkararlarından hangileri **milli egemenliğe (halk iradesine)** dayalı yeni bir devlet düzeninin kurulacağının açık göstergesidir?`,
     options: [
       "A) Yalnız I",
       "B) Yalnız II",
@@ -38,8 +40,10 @@ const KPSS_QUESTION_BANK = [
       "E) II ve III"
     ],
     answer: 1,
-    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **II. Öncül (Milli Egemenlik):** 'İrade-i milliyeyi hakim kılmak' ifadesi, padişah/saray iradesi yerine milletin egemenliğinin geçerli olacağını ilan eder. Bu doğrudan rejim ve milli egemenlikle ilgilidir.\n• **I ve III. Öncüller (Milli Bağımsızlık):** Vatanın bölünmezliği ve manda-himayenin reddi 'milli bağımsızlık' (dış güçlere karşı bağımsız olma) ile ilgilidir, milli egemenlik (iç yönetim şekli) ile değil.`,
-    lawRef: "ÖSYM KPSS Tarih — Erzurum Kongresi / Milli Egemenlik vs Bağımsızlık Ayrımı"
+    keyPoint: "📌 KİLİT BİLGİ: 'İrade-i Milliye' = Halkın Egemenliği (Cumhuriyet). 'Vatanın Bölünmezliği' ve 'Manda-Himayenin Reddi' ise Milli Bağımsızlık (Dışa karşı bağımsızlık) ile ilgilidir.",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: Milli Bağımsızlık ile Milli Egemenlik kavramlarını birbirine karıştırmayın!",
+    explanation: `Yalnızca II. öncül yönetim şeklinin halk iradesine dayanacağını belirterek rejim değişikliğinin sinyalini vermiştir.`,
+    lawRef: "ÖSYM KPSS Tarih — Kongreler Dönemi / Kavram Ayrımı"
   },
   {
     id: 3,
@@ -56,16 +60,38 @@ const KPSS_QUESTION_BANK = [
       "E) I, II ve III"
     ],
     answer: 2,
-    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **Kazasker ve Şeyhülislam:** Medrese çıkışlı olup Türk-Müslüman kökenli 'İlmiye' sınıfına mensuptur. Kazasker kadı ve müderris atamalarını yapar, davalara bakar; Şeyhülislam ise fetva makamıdır.\n• **Sadrazam:** Yönetim ve askeriye ile ilgili 'Seyfiye (Kılıç Ehli)' sınıfının başıdır.`,
-    lawRef: "ÖSYM KPSS Tarih — Osmanlı Divan Teşkilatı ve Sınıflar"
+    keyPoint: "📌 KİLİT BİLGİ: İlmiye sınıfı Türk-Müslüman kökenli ve medrese mezunu olmak zorundadır (Kazasker, Şeyhülislam, Kadı, Müderris). Sadrazam ise devşirme kökenli de olabilen Seyfiye (Kılıç) sınıfıdır.",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: Kazasker askeri değil, adliye ve eğitim işlerine bakan yüksek yargıçtır.",
+    explanation: `Kazasker ve Şeyhülislam İlmiye sınıfındandır. Sadrazam ise Seyfiye (yönetim-askeriye) sınıfının başıdır.`,
+    lawRef: "ÖSYM KPSS Tarih — Divan Teşkilatı"
   },
   {
     id: 4,
     period: "2023 KPSS Lisans",
     topic: "Tarih",
+    subTopic: "Kurtuluş Savaşı Muharebeler Dönemi",
+    type: "klasik",
+    question: `Kurtuluş Savaşı'nda TBMM Hükümeti'nin kazandığı I. İnönü Zaferi sonrasında İtilaf Devletleri Sevr Antlaşması'nı yumuşatarak kabul ettirmek amacıyla TBMM'yi ilk kez resmi olarak aşağıdaki konferanslardan hangisine davet etmiştir?`,
+    options: [
+      "A) Londra Konferansı (1921)",
+      "B) Lozan Barış Konferansı (1922)",
+      "C) Paris Barış Konferansı (1919)",
+      "D) San Remo Konferansı (1920)",
+      "E) Mudanya Konferansı (1922)"
+    ],
+    answer: 0,
+    keyPoint: "📌 KİLİT BİLGİ: I. İnönü Zaferi'nin dış politikadaki en büyük sonucu TBMM'nin İtilaf Devletlerince resmen tanındığı LONDRA KONFERANSI'dır (Bekir Sami Bey katılmıştır).",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: İtilaf Devletleri ikilik çıkarmak için İstanbul Hükümeti'ni de davet etmiş, ancak Tevfik Paşa 'Söz milletin asıl temsilcisi olan TBMM heyetinedir' demiştir.",
+    explanation: `I. İnönü Zaferi sonrası toplanan Londra Konferansı ile TBMM uluslararası alanda hukuken tanınmıştır.`,
+    lawRef: "ÖSYM KPSS Tarih — I. İnönü Muharebesi ve Diplomatik Sonuçları"
+  },
+  {
+    id: 5,
+    period: "2022 KPSS Lisans",
+    topic: "Tarih",
     subTopic: "Atatürk İlkeleri ve İnkılap Tarihi",
     type: "oncullu",
-    question: `Cumhuriyet Dönemi'nde gerçekleştirilen;\n\nI. Aşar vergisinin kaldırılması (1925),\nII. Tevhid-i Tedrisat Kanunu ile eğitimin birleştirilmesi (1924),\nIII. Soyadı Kanunu ile unvan ve lakapların yasaklanması (1934)\n\ninkılaplarından hangileri doğrudan **Halkçılık ilkesi** doğrultusunda toplumda eşitlik sağlama amacı taşır?`,
+    question: `Cumhuriyet Dönemi'nde gerçekleştirilen;\n\nI. Aşar vergisinin kaldırılması (1925),\nII. Tevhid-i Tedrisat Kanunu ile eğitimin birleştirilmesi (1924),\nIII. Soyadı Kanunu ile unvan ve lakapların yasaklanması (1934)\n\ninkılaplarından hangileri doğrudan **Halkçılık ilkesi** doğrultusunda toplumda ayrıcalıkları kaldırıp eşitlik sağlama amacına yöneliktir?`,
     options: [
       "A) Yalnız I",
       "B) Yalnız III",
@@ -74,13 +100,15 @@ const KPSS_QUESTION_BANK = [
       "E) I, II ve III"
     ],
     answer: 4,
-    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **Aşar Vergisinin Kaldırılması:** Köylü üzerindeki ağır vergi yükünü kaldırarak ekonomik eşitlik sağlamıştır.\n• **Tevhid-i Tedrisat:** Kız-erkek ve zengin-fakir ayrımı olmadan herkese eşit eğitim hakkı tanımıştır.\n• **Soyadı Kanunu:** Paşa, ağa, bey gibi ayrıcalıklı unvanları kaldırarak kanun önünde eşitlik sağlamıştır. Her üç inkılap da doğrudan Halkçılık ilkesidir.`,
-    lawRef: "ÖSYM KPSS Tarih — Atatürk İlkeleri ve Eşitlik İlkesi"
+    keyPoint: "📌 KİLİT BİLGİ: Halkçılık = Eşitlik, ayrıcalıksız toplum, sosyal adalet ve halkın refahıdır. Aşar köylüyü rahatlatmış, Tevhid-i Tedrisat eğitimde fırsat eşitliği vermiş, Soyadı Kanunu zümre ayrıcalıklarını silmiştir.",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: Bu üç inkılap da Halkçılık ilkesinin en klasik ve temel sınav sorularıdır.",
+    explanation: `Her üç inkılap da doğrudan kanun önünde eşitliği ve sosyal adaleti sağladığından Halkçılık ilkesidir.`,
+    lawRef: "ÖSYM KPSS Tarih — Atatürk İlkeleri"
   },
 
-  // COĞRAFYA — ÖNCÜLLÜ SORULAR
+  // ================= COĞRAFYA SORULARI =================
   {
-    id: 5,
+    id: 6,
     period: "2024 KPSS Lisans",
     topic: "Coğrafya",
     subTopic: "Türkiye'nin Jeomorfolojisi ve Platoları",
@@ -94,16 +122,38 @@ const KPSS_QUESTION_BANK = [
       "E) I, II ve III"
     ],
     answer: 4,
-    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **I. Karstik:** Teke ve Taşeli kireçtaşı (kalker) erimesiyle oluşan karstik platolardır.\n• **II. Lav:** Erzurum-Kars ve Ardahan volkanik lav örtülerinden oluşan yüksek lav platolarıdır.\n• **III. Aşınım:** Çatalca-Kocaeli aşınarak deniz seviyesine yaklaşmış peneplen (aşınım) platosudur. Verilen üç eşleştirme de %100 doğrudur.`,
-    lawRef: "ÖSYM KPSS Coğrafya — Türkiye'nin Yer Şekilleri ve Platolar"
+    keyPoint: "📌 KİLİT BİLGİ: Teke-Taşeli = Karstik (Kireçtaşı/Kalker), Erzurum-Kars = Lav Örtüsü, Çatalca-Kocaeli = Aşınım Peneplen, Obruk-Cihanbeyli-Haymana = Yatay Duruşlu (Tabaka Düzlüğü).",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: Erzurum-Kars platosunda yaz yağışları nedeniyle çayır ve büyükbaş mera hayvancılığı yaygındır.",
+    explanation: `Verilen üç eşleştirme de Türkiye jeomorfolojisine göre %100 doğrudur.`,
+    lawRef: "ÖSYM KPSS Coğrafya — Türkiye Platoları"
   },
   {
-    id: 6,
+    id: 7,
     period: "2024 KPSS Lisans",
     topic: "Coğrafya",
-    subTopic: "Türkiye'nin Madenleri ve Sanayisi",
+    subTopic: "Madenler ve Enerji Kaynakları",
+    type: "klasik",
+    question: `Dünya rezervlerinin yaklaşık %72'si Türkiye'de bulunan; Balıkesir (Bigadiç, Susurluk), Bursa (Mustafakemalpaşa), Kütahya (Emet) ve Eskişehir (Seyitgazi)'de çıkarılan stratejik maden aşağıdakilerden hangisidir?`,
+    options: [
+      "A) Boksit (Alüminyum)",
+      "B) Bor Mineralleri",
+      "C) Bakır",
+      "D) Krom",
+      "E) Barit"
+    ],
+    answer: 1,
+    keyPoint: "📌 KİLİT BİLGİ: Bor madeninin şifresi 'B-İ-B-E-K'tir (Balıkesir, Bursa, Eskişehir, Kütahya). İşleme tesisi Bandırma'dadır (Liman ve Ulaşım avantajı).",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: Bor madeni roket/jet yakıtı, cam ve deterjan sanayisinde kullanılır.",
+    explanation: `Dünya rezerv lideri olduğumuz maden Bor'dur.`,
+    lawRef: "ÖSYM KPSS Coğrafya — Madenler"
+  },
+  {
+    id: 8,
+    period: "2023 KPSS Lisans",
+    topic: "Coğrafya",
+    subTopic: "Türkiye'de Sanayi Tesislerinin Kuruluşu",
     type: "oncullu",
-    question: `Türkiye'de bir sanayi tesisinin kuruluş yeri belirlenirken 'hammaddeye yakınlık' veya 'enerji kaynağına yakınlık' faktörleri belirleyici olmaktadır.\n\nBuna göre;\nI. Karabük Demir-Çelik Fabrikası ➔ Enerji kaynağına (Taş kömürü) yakınlık,\nII. Seydişehir Alüminyum Tesisleri ➔ Hammaddeye (Boksit) yakınlık,\nIII. Samsun Bakır İşletmesi ➔ Ulaşım (Liman) kolaylığı\n\ngerekçelendirmelerinden hangileri **doğrudur**?`,
+    question: `Türkiye'de bir sanayi tesisinin kuruluş yeri belirlenirken hammadde, enerji kaynağı veya ulaşım kolaylığı belirleyici olmaktadır.\n\nBuna göre;\nI. Karabük Demir-Çelik Fabrikası ➔ Enerji kaynağına (Taş kömürü) yakınlık,\nII. Seydişehir Alüminyum Tesisleri ➔ Hammaddeye (Boksit) yakınlık,\nIII. Samsun Bakır İşletmesi ➔ Ulaşım (Liman) kolaylığı\n\ngerekçelendirmelerinden hangileri **doğrudur**?`,
     options: [
       "A) Yalnız I",
       "B) I ve II",
@@ -112,13 +162,15 @@ const KPSS_QUESTION_BANK = [
       "E) I, II ve III"
     ],
     answer: 4,
-    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **Karabük:** Demir madeni çıkmaz; ancak Zonguldak taş kömürüne (enerji kaynağı) yakın olduğu için kurulmuştur.\n• **Seydişehir:** Konya Seydişehir'de zengin Boksit madeni çıktığı için hammaddeye yakın kurulmuştur.\n• **Samsun:** Bakır madeni çıkmaz; deniz yoluyla Artvin ve Kastamonu'dan gelen cevherin işlenip ihraç edilmesi için liman/ulaşım avantajıyla kurulmuştur.`,
-    lawRef: "ÖSYM KPSS Coğrafya — Türkiye'de Sanayi Tesislerinin Kuruluş Yeri Faktörleri"
+    keyPoint: "📌 KİLİT BİLGİ: Karabük'te demir çıkmaz (Taş kömürü enerjisi vardır). Samsun'da bakır çıkmaz (Liman vardır). Seydişehir'de ise doğrudan Boksit madeni çıkarılır.",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: İskenderun Demir-Çelik Fabrikası da hammaddeye değil, LİMAN/ULAŞIM avantajına dayalı kurulmuştur.",
+    explanation: `Tüm eşleştirmeler ve kuruluş gerekçeleri doğrudur.`,
+    lawRef: "ÖSYM KPSS Coğrafya — Sanayinin Kuruluş Koşulları"
   },
 
-  // VATANDAŞLIK / ANAYASA — ÖNCÜLLÜ SORULAR
+  // ================= VATANDAŞLIK / ANAYASA SORULARI =================
   {
-    id: 7,
+    id: 9,
     period: "2024 KPSS Lisans",
     topic: "Vatandaşlık",
     subTopic: "1982 Anayasası — Yasama Denetimi",
@@ -132,12 +184,14 @@ const KPSS_QUESTION_BANK = [
       "E) I, II, III ve IV"
     ],
     answer: 1,
-    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **2017 Anayasa Değişikliği Kritik Bilgisi:** Parlamenter sistemden Cumhurbaşkanlığı Hükümet Sistemine geçilmesiyle hükümetin meclise karşı siyasi sorumluluğu olan **GENSORU** ve **GÖREV ZARARI (Sözlü Soru)** anayasadan tamamen kaldırılmıştır!\n• **Halen Geçerli Olanlar:** Meclis Araştırması, Genel Görüşme, Meclis Soruşturması ve Yazılı Soru (Milletvekillerinin CB Yardımcıları ve Bakanlara yönelttiği 15 günlük yazılı soru).`,
-    lawRef: "1982 T.C. Anayasası — Madde 98 (TBMM'nin Bilgi Edinme ve Denetim Yolları)"
+    keyPoint: "📌 KİLİT BİLGİ: 2017 Anayasa değişikliği ile Bakanlar Kurulu ve Başbakanlık kalktığı için GENSORU ve SÖZLÜ SORU anayasadan tamamen kaldırılmıştır. Halen geçerli olanlar: Meclis Araştırması, Genel Görüşme, Meclis Soruşturması ve Yazılı Soru.",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: Yazılı soru milletvekilleri tarafından Cumhurbaşkanı Yardımcıları ve Bakanlara sorulur (Cumhurbaşkanına soru sorulamaz!).",
+    explanation: `Gensoru 2017'de kalkmıştır. I, II ve III halen anayasada yer alan meclis denetim yollarıdır.`,
+    lawRef: "1982 T.C. Anayasası — Madde 98"
   },
   {
-    id: 8,
-    period: "2023 KPSS Lisans",
+    id: 10,
+    period: "2024 KPSS Lisans",
     topic: "Vatandaşlık",
     subTopic: "1982 Anayasası — Yargı Organı",
     type: "oncullu",
@@ -150,13 +204,35 @@ const KPSS_QUESTION_BANK = [
       "E) I, II, III ve IV"
     ],
     answer: 1,
-    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **I, II ve III:** Anayasa Mahkemesi'nin asli görevleridir.\n• **IV. Öncül (Tuzak):** Sayıştay ile Danıştay'ın vergi konularındaki kararları uyuşmazsa **DANIŞTAY'IN** kararı esas alınır (AYM değil!). Sayıştay kararlarının temyizi Anayasa Mahkemesi'ne gitmez.`,
-    lawRef: "1982 T.C. Anayasası — Madde 148 (Anayasa Mahkemesi'nin Görev ve Yetkileri)"
+    keyPoint: "📌 KİLİT BİLGİ: Sayıştay ile Danıştay'ın vergi uyuşmazlığında DANIŞTAY kararı geçerlidir. Sayıştay kararları Anayasa Mahkemesi'ne temyize gitmez.",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: İnkılap kanunlarının anayasaya aykırılığı iddia edilemez.",
+    explanation: `I, II ve III AYM'nin görevleridir. IV. öncül yanlıştır.`,
+    lawRef: "1982 T.C. Anayasası — Madde 148"
+  },
+  {
+    id: 11,
+    period: "2023 KPSS Lisans",
+    topic: "Vatandaşlık",
+    subTopic: "İdare Hukuku & Taşra Teşkilatı",
+    type: "klasik",
+    question: `Aşağıdakilerden hangisi Türkiye'de Başkentin (Merkezin) taşradaki en yüksek mülki idare amiridir, ilde doğrudan Cumhurbaşkanı'nın temsilcisi sıfatıyla görev yapar ve yetki genişliğine sahiptir?`,
+    options: [
+      "A) Kaymakam",
+      "B) Vali",
+      "C) Büyükşehir Belediye Başkanı",
+      "D) İl Genel Meclisi Başkanı",
+      "E) Defterdar"
+    ],
+    answer: 1,
+    keyPoint: "📌 KİLİT BİLGİ: Vali = Devletin ve Cumhurbaşkanı'nın temsilcisidir; yetki genişliği (merkeze sormadan acil karar alma) vardır. Kaymakam = Yalnızca Cumhurbaşkanı'nın temsilcisidir; yetki genişliği YOKTUR.",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: Kaymakam devletin değil, yalnızca hükümetin/Cumhurbaşkanı'nın temsilcisidir.",
+    explanation: `Vali, ilde yetki genişliğine sahip en yüksek mülki amirdir.`,
+    lawRef: "5442 Sayılı İl İdaresi Kanunu"
   },
 
-  // TÜRKÇE — ÖNCÜLLÜ SORULAR
+  // ================= TÜRKÇE SORULARI =================
   {
-    id: 9,
+    id: 12,
     period: "2024 KPSS Lisans",
     topic: "Türkçe",
     subTopic: "Cümle Analizi ve Dilbilgisi",
@@ -170,13 +246,35 @@ const KPSS_QUESTION_BANK = [
       "E) I. cümle kurallı ve fiil cümlesidir."
     ],
     answer: 0,
-    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **A Seçeneği (Yanlış):** I. cümlenin yüklemi 'taşıyor' sözcüğüdür. 'Taşımak' fiili şimdiki zaman kipi (-yor) almış basit yapılı bir fiildir, birleşik fiil değildir.\n• **B Seçeneği:** 'yürürken' sözcüğü -ken ekiyle türetilmiş bir zarf-fiildir.\n• **C Seçeneği:** 'arkeologların heyecanı' (isim tamlaması), 'her buluntu' (sıfat tamlaması).\n• **D Seçeneği:** 'vadi-ye' yönelme (-e/-a) durum ekidir.`,
-    lawRef: "ÖSYM KPSS Türkçe — Dilbilgisi ve Cümle Çözümlemesi"
+    keyPoint: "📌 KİLİT BİLGİ: 'Taşımak' fiili şimdiki zaman kipi (-yor) almış basit yapılı bir fiildir. Birleşik fiil olabilmesi için (kurallı birleşik, yardımcı eylemle kurulan veya anlamca kaynaşmış) iki fiilin/sözcüğün birleşmesi gerekir.",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: 'Yürürken' (-ken) eki zarf fiildir.",
+    explanation: `I. cümlenin yüklemi birleşik fiil değil, basit yapılı çekimli fiildir.`,
+    lawRef: "ÖSYM KPSS Türkçe — Dilbilgisi"
+  },
+  {
+    id: 13,
+    period: "2023 KPSS Lisans",
+    topic: "Türkçe",
+    subTopic: "Yazım Kuralları (TDK)",
+    type: "klasik",
+    question: `Aşağıdaki cümlelerin hangisinde büyük harflerin veya birleşik sözcüklerin yazımıyla ilgili bir yazım yanlışı vardır?`,
+    options: [
+      "A) Türk Dil Kurumu Başkanlığına dilekçe ile başvurdu.",
+      "B) Türkiye'nin kuzeydoğusunda şiddetli yağış bekleniyor.",
+      "C) TBMM'nin 29 Ekim 1923 tarihindeki oturumu tarihi bir andı.",
+      "D) Resmi Gazete'de yayımlanan yönetmelik yürürlüğe girdi.",
+      "E) Bu yılki Antep Fıstığı rekoltesi üreticiyi sevindirdi."
+    ],
+    answer: 4,
+    keyPoint: "📌 KİLİT BİLGİ: Özel ada dahil olmayan tür, cins ve ürün adları küçük harfle yazılır: Antep fıstığı, Van kedisi, Maraş dondurması, Hindistan cevizi, İngiliz anahtarı.",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: 'Resmi Gazete' istisnadır ve 'Gazete' kelimesi büyük harfle yazılır.",
+    explanation: `'Antep fıstığı' ifadesinde fıstık kelimesi küçük harfle başlamalıdır.`,
+    lawRef: "TDK Yazım Kılavuzu"
   },
 
-  // MATEMATİK & SAYISAL MANTIK
+  // ================= MATEMATİK & SAYISAL MANTIK =================
   {
-    id: 10,
+    id: 14,
     period: "2024 KPSS Lisans",
     topic: "Matematik",
     subTopic: "Sayısal Mantık & Eşitsizlik",
@@ -190,7 +288,31 @@ const KPSS_QUESTION_BANK = [
       "E) I, II ve III"
     ],
     answer: 4,
-    explanation: `💡 **ÖSYM Çözüm Analizi:**\n1. 'c²' çift kuvvet olduğu için c ≠ 0 iken daima pozitiftir. a · c² > 0 olduğundan **a > 0 (Pozitif)** olmak zorundadır (I. öncül kesinlikle doğru).\n2. a · b < 0 ve a pozitif olduğuna göre **b < 0 (Negatif)** olmak zorundadır (II. öncül kesinlikle doğru).\n3. b + c = 0 eşitliğinden c = -b olur. b negatif olduğuna göre **c > 0 (Pozitif)** olmak zorundadır (III. öncül kesinlikle doğru).\nSonuç: I, II ve III kesinlikle doğrudur.`,
-    lawRef: "ÖSYM KPSS Matematik — Eşitsizlikler ve İşaret Analizi"
+    keyPoint: "📌 KİLİT BİLGİ: Çift kuvvetli terimler (c²) daima pozitiftir (+). Bu nedenle a · (+) > 0 ise a > 0 olmak zorundadır. a pozitif ise a · b < 0'dan b < 0, b + c = 0'dan c > 0 olur.",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: Eşitsizlik sorularında önce çift üslü sayıdan başlayıp işaretini garantileyin!",
+    explanation: `Adım adım çözümle a (+), b (-), c (+) bulunur. I, II ve III kesinlikle doğrudur.`,
+    lawRef: "ÖSYM KPSS Matematik — Eşitsizlikler"
+  },
+
+  // ================= GÜNCEL BİLGİLER =================
+  {
+    id: 15,
+    period: "2024 KPSS Lisans",
+    topic: "Güncel Bilgiler",
+    subTopic: "Kültür Mirası ve Arkeoloji",
+    type: "klasik",
+    question: `UNESCO Dünya Mirası Listesi'nde yer alan ve 'Tarihin Sıfır Noktası' olarak kabul edilen dünyanın en eski anıtsal tapınak yerleşimi aşağıdakilerden hangisidir?`,
+    options: [
+      "A) Çatalhöyük (Konya)",
+      "B) Göbeklitepe (Şanlıurfa)",
+      "C) Hattuşaş (Çorum)",
+      "D) Efes (İzmir)",
+      "E) Ani Ören Yeri (Kars)"
+    ],
+    answer: 1,
+    keyPoint: "📌 KİLİT BİLGİ: Şanlıurfa Göbeklitepe yaklaşık M.Ö. 10.000 (12.000 yıl önce) inşa edilmiş olup yerleşik hayattan önce de tapınak yapıldığını kanıtlayan 'Tarihin Sıfır Noktası'dır.",
+    trapWarning: "⚠️ ÖSYM TUZAĞI: Çatalhöyük ilk şehir yerleşmesidir; Göbeklitepe ise ilk tapınak/inanç merkezidir.",
+    explanation: `Göbeklitepe, UNESCO Dünya Mirası Listesi'nde yer alan en eski tapınak kompleksidir.`,
+    lawRef: "ÖSYM KPSS Güncel Bilgiler"
   }
 ];

@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>KPSS Akademisi — ÖSYM Çıkmış Öncüllü Soru Bankası & Gerekçeli Çözümler</title>
-  <meta name="description" content="KPSS GY-GK: Tarih, Coğrafya, Vatandaşlık, Türkçe, Matematik alanlarında ÖSYM standartlarında öncüllü çıkmış sorular, gerekçeli analizler ve hafıza kodlamaları.">
+  <title>KPSS Akademisi — ÖSYM Çıkmış Öncüllü Soru Bankası & Zamanla Yarış</title>
+  <meta name="description" content="KPSS GY-GK: Tarih, Coğrafya, Vatandaşlık, Türkçe, Matematik alanlarında ÖSYM standartlarında öncüllü çıkmış sorular, sınav sayacı, kilit noktalar ve inatçı tekrar sistemi.">
   <meta name="author" content="Tunahan Haksever">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://tunahanhaksever.github.io/kpss-sinav-merkezi/">
 
-  <!-- Google Fonts: Editorial Serif + Modern Clean Sans -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -22,12 +22,11 @@
       --bg-card: #202b42;
       --bg-hover: #2a3854;
       
-      --accent-terracotta: #ea580c;
-      --accent-ochre: #d97706;
       --accent-brass: #f59e0b;
       --accent-sage: #10b981;
       --accent-ruby: #e11d48;
       --accent-azure: #3b82f6;
+      --accent-purple: #a855f7;
       
       --border-subtle: #243048;
       --border-prominent: #374665;
@@ -48,7 +47,7 @@
     header.workstation-header {
       background: var(--bg-panel);
       border-bottom: 1.5px solid var(--border-prominent);
-      padding: 14px 24px;
+      padding: 12px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -93,6 +92,21 @@
       text-transform: uppercase;
     }
 
+    /* Live Timer in Header */
+    .header-timer-widget {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #000;
+      border: 1px solid var(--accent-brass);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-brass);
+    }
+
     /* Navigation Bar */
     .nav-tabs {
       display: flex;
@@ -104,7 +118,7 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       color: var(--text-muted);
-      padding: 8px 16px;
+      padding: 8px 14px;
       border-radius: 6px;
       font-size: 13px;
       font-weight: 600;
@@ -155,7 +169,7 @@
     .workstation-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 24px 20px 90px 20px;
+      padding: 20px 20px 90px 20px;
       display: grid;
       grid-template-columns: 280px 1fr;
       gap: 24px;
@@ -172,7 +186,7 @@
       background: var(--bg-panel);
       border: 1px solid var(--border-subtle);
       border-radius: 10px;
-      padding: 18px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -241,11 +255,19 @@
       background: var(--bg-panel);
       border: 1.5px solid var(--border-subtle);
       border-radius: 12px;
-      padding: 26px 24px;
+      padding: 24px 22px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 16px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .question-desk.shake { animation: shake 0.35s cubic-bezier(.36,.07,.19,.97) both; }
+    @keyframes shake {
+      10%, 90% { transform: translate3d(-2px, 0, 0); }
+      20%, 80% { transform: translate3d(3px, 0, 0); }
+      30%, 50%, 70% { transform: translate3d(-5px, 0, 0); }
+      40%, 60% { transform: translate3d(5px, 0, 0); }
     }
 
     .question-header {
@@ -278,6 +300,18 @@
       border-radius: 4px;
     }
 
+    /* Lesson Filter Bar in Solver */
+    .filter-subject-select {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      outline: none;
+      cursor: pointer;
+    }
+
     /* Question Body with Öncül (I. II. III.) Styling */
     .question-body {
       font-size: 16px;
@@ -299,7 +333,7 @@
       background: var(--bg-surface);
       border: 1.5px solid var(--border-subtle);
       border-radius: 8px;
-      padding: 14px 18px;
+      padding: 13px 16px;
       font-size: 14.5px;
       color: var(--text-bright);
       cursor: pointer;
@@ -328,7 +362,7 @@
       flex-shrink: 0;
     }
 
-    /* ÖSYM Solution Box */
+    /* ÖSYM Solution & Key Point Drawer */
     .solution-drawer {
       background: #090d16;
       border: 1.5px solid var(--border-prominent);
@@ -343,6 +377,28 @@
       animation: fadeIn 0.2s ease-out;
     }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    .box-keypoint {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid var(--accent-brass);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: #fde047;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .box-trap {
+      background: rgba(225, 29, 72, 0.12);
+      border: 1px solid var(--accent-ruby);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: #fda4af;
+      font-weight: 600;
+      line-height: 1.5;
+    }
 
     .solution-header { font-weight: 700; color: var(--accent-brass); display: flex; align-items: center; gap: 6px; }
     .solution-body { color: var(--text-bright); }
@@ -453,14 +509,20 @@
       </div>
       <div class="brand-info">
         <h1>KPSS AKADEMİSİ</h1>
-        <p>ÖSYM Öncüllü Soru Bankası & Analiz İstasyonu</p>
+        <p>ÖSYM Soru Külliyatı & Kilit Noktalar</p>
       </div>
     </a>
+
+    <!-- Live Timer Widget -->
+    <div class="header-timer-widget" title="ÖSYM Sınav Sayacı">
+      <span>⏱️</span>
+      <span id="exam-countdown-timer">130:00</span>
+    </div>
 
     <!-- Desktop Navigation -->
     <nav class="nav-tabs">
       <button class="tab-btn active" id="btn-tab-exam" onclick="switchAcademicView('exam')">📝 Öncüllü Soru Masası</button>
-      <button class="tab-btn" id="btn-tab-mnemonics" onclick="switchAcademicView('mnemonics')">📌 Hafıza Şifreleri (KADER/TAYYAR)</button>
+      <button class="tab-btn" id="btn-tab-mnemonics" onclick="switchAcademicView('mnemonics')">📌 Hafıza Şifreleri</button>
       <button class="tab-btn" id="btn-tab-stream" onclick="switchAcademicView('stream')">📑 Tüm Soru Bankası</button>
       <button class="tab-btn" id="btn-tab-academy" onclick="switchAcademicView('academy')">📚 Müfredat Notları</button>
       <button class="tab-btn" id="btn-tab-profile" style="border-color: var(--accent-brass); color: #fff;" onclick="openProfileModal()">
@@ -543,14 +605,27 @@
       
       <!-- VIEW 1: INTERACTIVE QUESTION SOLVER -->
       <div id="pane-exam" class="view-panel-tab">
-        <div class="question-desk">
+        <div class="question-desk" id="current-question-card">
           
           <div class="question-header">
             <div style="display: flex; align-items: center; gap: 8px;">
               <span class="tag-exam-type" id="q-header-period">2024 KPSS Lisans — Soru #1</span>
               <span class="tag-lesson" id="q-header-topic">Tarih</span>
             </div>
-            <button class="tab-btn" style="padding: 4px 10px; font-size: 12px;" onclick="speakAcademicQuestion()">🔊 Soruyu Dinle</button>
+
+            <!-- Subject Filter -->
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <select class="filter-subject-select" id="exam-subject-filter" onchange="onSubjectFilterChange()">
+                <option value="all">Tüm Dersler (GY-GK)</option>
+                <option value="Tarih">Tarih</option>
+                <option value="Coğrafya">Coğrafya</option>
+                <option value="Vatandaşlık">Vatandaşlık / Anayasa</option>
+                <option value="Türkçe">Türkçe</option>
+                <option value="Matematik">Matematik</option>
+                <option value="Güncel Bilgiler">Güncel Bilgiler</option>
+              </select>
+              <button class="tab-btn" style="padding: 4px 8px; font-size: 12px;" onclick="speakAcademicQuestion()">🔊 Dinle</button>
+            </div>
           </div>
 
           <!-- Question Body with Öncüller -->
@@ -563,10 +638,16 @@
             <!-- Rendered dynamically -->
           </div>
 
-          <!-- Solution Drawer -->
+          <!-- Solution & Key Point Drawer -->
           <div class="solution-drawer" id="q-solution-drawer" style="display: none;">
+            <div class="box-keypoint" id="q-box-keypoint">
+              <!-- Key point -->
+            </div>
+            <div class="box-trap" id="q-box-trap">
+              <!-- Trap warning -->
+            </div>
             <div class="solution-header">
-              <span>🔍 ÖSYM Çözüm Dosyası & Kanuni/Tarihi Dayanak</span>
+              <span>🔍 ÖSYM Gerekçeli Çözüm Dosyası</span>
             </div>
             <div class="solution-body" id="q-solution-text">
               <!-- Content -->
@@ -674,6 +755,10 @@
     let currentKpssUser = localStorage.getItem('kpss_user_email') || 'misafir@kpss.gov.tr';
     let kpssAllProgress = {};
 
+    // 130 minutes ÖSYM Exam countdown timer (7800 seconds)
+    let remainingSeconds = 130 * 60;
+    let timerInterval = null;
+
     loadStorageEngine();
 
     let currentIndex = kpssAllProgress[currentKpssUser]?.currentIndex || 0;
@@ -684,6 +769,7 @@
     let answered = false;
 
     // Initialize
+    startExamTimer();
     updateProfileBadges();
     renderMatrixGrid();
     loadQuestionCard();
@@ -691,6 +777,18 @@
     renderAcademy();
     renderStream();
     updateStatsDisplay();
+
+    function startExamTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        if (remainingSeconds > 0) {
+          remainingSeconds--;
+          const mins = Math.floor(remainingSeconds / 60);
+          const secs = remainingSeconds % 60;
+          document.getElementById('exam-countdown-timer').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+      }, 1000);
+    }
 
     function loadStorageEngine() {
       try {
@@ -818,11 +916,25 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    function getFilteredQuestions() {
+      const subj = document.getElementById('exam-subject-filter')?.value || 'all';
+      if (subj === 'all') return KPSS_QUESTION_BANK;
+      return KPSS_QUESTION_BANK.filter(q => q.topic === subj);
+    }
+
+    function onSubjectFilterChange() {
+      currentIndex = 0;
+      renderMatrixGrid();
+      loadQuestionCard();
+    }
+
     function renderMatrixGrid() {
       const container = document.getElementById('matrix-grid');
       container.innerHTML = '';
 
-      KPSS_QUESTION_BANK.forEach((q, idx) => {
+      const pool = getFilteredQuestions();
+
+      pool.forEach((q, idx) => {
         const btn = document.createElement('div');
         btn.className = 'q-matrix-btn';
         btn.textContent = idx + 1;
@@ -845,12 +957,17 @@
     function loadQuestionCard() {
       answered = false;
       document.getElementById('q-solution-drawer').style.display = 'none';
+      document.getElementById('current-question-card').classList.remove('shake');
 
+      const pool = getFilteredQuestions();
       let q;
-      if (repeatQueue.length > 0 && Math.random() > 0.4) {
-        q = repeatQueue[0];
+
+      // Persistence Repeat loop: If user made a mistake in this topic, force it
+      const topicRepeat = repeatQueue.filter(item => pool.some(p => p.id === item.id));
+      if (topicRepeat.length > 0 && Math.random() > 0.4) {
+        q = topicRepeat[0];
       } else {
-        q = KPSS_QUESTION_BANK[currentIndex] || KPSS_QUESTION_BANK[0];
+        q = pool[currentIndex] || pool[0];
       }
 
       document.getElementById('q-header-period').textContent = `${q.period} — Soru #${q.id}`;
@@ -895,6 +1012,8 @@
       } else {
         rowElement.classList.add('wrong');
         wrongCount++;
+        document.getElementById('current-question-card').classList.add('shake');
+        
         if (allRows[q.answer]) allRows[q.answer].classList.add('correct');
 
         if (!repeatQueue.some(item => item.id === q.id)) {
@@ -902,6 +1021,9 @@
         }
       }
 
+      // Populate Kilit Nokta & Sınav Tuzağı
+      document.getElementById('q-box-keypoint').innerHTML = q.keyPoint || '📌 KİLİT BİLGİ: ÖSYM bu tarz öncüllü sorularda kavram ayrımını test eder.';
+      document.getElementById('q-box-trap').innerHTML = q.trapWarning || '⚠️ ÖSYM TUZAĞI: Seçeneklerdeki benzer ifadeleri dikkatle eleyiniz.';
       document.getElementById('q-solution-text').innerHTML = q.explanation.replace(/\n/g, '<br>');
       document.getElementById('q-solution-law').textContent = `ÖSYM Müfredat Referansı: ${q.lawRef}`;
       document.getElementById('q-solution-drawer').style.display = 'flex';
@@ -912,13 +1034,15 @@
     }
 
     function nextAcademicQuestion() {
-      currentIndex = (currentIndex + 1) % KPSS_QUESTION_BANK.length;
+      const pool = getFilteredQuestions();
+      currentIndex = (currentIndex + 1) % pool.length;
       saveStorageEngine();
       loadQuestionCard();
     }
 
     function speakAcademicQuestion() {
-      const q = KPSS_QUESTION_BANK[currentIndex];
+      const pool = getFilteredQuestions();
+      const q = pool[currentIndex];
       if (q && window.speechSynthesis) {
         window.speechSynthesis.cancel();
         const ut = new SpeechSynthesisUtterance(q.question);
