@@ -1,290 +1,196 @@
 /**
- * KPSS Genel Yetenek & Genel Kültür Çıkmış Sınav Soruları ve Gerekçeli Çözümleri
- * ÖSYM KPSS Lisans, Önlisans ve Ortaöğretim Arşivi
+ * KPSS Akademisi — ÖSYM Standartlarında Gerçek Öncüllü Soru Havuzu
+ * Tarih, Coğrafya, Vatandaşlık, Türkçe, Matematik & Güncel Bilgiler
  */
 
 const KPSS_QUESTION_BANK = [
-  // TARİH
+  // TARİH — ÖNCÜLLÜ SORULAR
   {
     id: 1,
     period: "2024 KPSS Lisans",
     topic: "Tarih",
-    subTopic: "İlk Türk Devletleri",
-    question: "İslamiyet öncesi Türk devletlerinde hükümdarın yetkilerini Tanrı'dan aldığına inanılan ve kan bağı yoluyla hanedanın tüm erkek üyelerine geçtiği kabul edilen egemenlik anlayışı aşağıdakilerden hangisidir?",
+    subTopic: "İlk Türk Devletleri Teşkilatı",
+    type: "oncullu",
+    question: `İslamiyet öncesi Türk devletlerinde görülen;\n\nI. Ülke topraklarının hanedanın ortak malı sayılması,\nII. Hükümdara yönetme yetkisinin Gök Tanrı tarafından verildiğine (Kut) inanılması,\nIII. Devleti yöneten kağanın 'Töre' kurallarına uyma zorunluluğunun bulunması\n\ndurumlarından hangileri taht kavgalarının çıkmasında ve devletlerin kısa sürede parçalanmasında **doğrudan etkili** olmuştur?`,
     options: [
-      "A) Kut anlayışı",
-      "B) Töre",
-      "C) Kurultay",
-      "D) Oguş",
-      "E) Ayukı"
+      "A) Yalnız I",
+      "B) Yalnız II",
+      "C) I ve II",
+      "D) I ve III",
+      "E) I, II ve III"
     ],
-    answer: 0,
-    explanation: "İslamiyet öncesi Türk devletlerinde devleti yönetme yetkisinin Gök Tanrı tarafından verildiğine inanılan anlayışa 'KUT' denir. Kut'un kan bağı yoluyla hanedan üyelerine geçtiğine inanılması 'veraset sisteminde belirsizliğe' ve sık sık taht kavgalarına yol açmıştır.",
-    lawRef: "ÖSYM KPSS Tarih — İslam Öncesi Türk Tarihi / Veraset Hukuku"
+    answer: 2,
+    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **I. Öncül (Doğru):** Ülke hanedanın ortak malı sayıldığı için her erkek hanedan üyesi tahtta hak iddia etmiş ve bu durum doğrudan taht kavgalarına yol açmıştır.\n• **II. Öncül (Doğru):** Kut anlayışının kan bağıyla tüm erkek çocuklara geçtiğine inanılması, kimin tahta geçeceğinin kesin olmamasına (veraset belirsizliği) neden olmuştur.\n• **III. Öncül (Yanlış):** Töre kurallarına uyulması hükümdarın keyfi yönetimini sınırlandıran, adaleti sağlayan bir unsurdur; parçalanmaya yol açmaz.`,
+    lawRef: "ÖSYM KPSS Tarih — Türk Devlet Teşkilatı ve Veraset Sistemi"
   },
   {
     id: 2,
     period: "2024 KPSS Lisans",
     topic: "Tarih",
-    subTopic: "Kurtuluş Savaşı Hazırlık Dönemi",
-    question: "Milli Mücadele Dönemi'nde 'Milletin bağımsızlığını yine milletin azim ve kararı kurtaracaktır.' maddesiyle Kurtuluş Savaşı'nın amacı, gerekçesi ve yöntemi ilk kez aşağıdakilerin hangisinde belirtilmiştir?",
+    subTopic: "Kurtuluş Savaşı Kongreler Dönemi",
+    type: "oncullu",
+    question: `Mustafa Kemal Paşa'nın liderliğinde toplanan Erzurum Kongresi'nde alınan;\n\nI. 'Milli sınırlar içinde vatan bir bütündür, bölünemez.'\nII. 'Kuva-yı Millîye'yi amil, irade-i millîyeyi hakim kılmak esastır.'\nIII. 'Manda ve himaye kabul edilemez.'\n\nkararlarından hangileri **milli egemenliğe (halk iradesine)** dayalı yeni bir devlet düzeninin kurulacağının açık bir göstergesidir?`,
     options: [
-      "A) Havza Genelgesi",
-      "B) Amasya Genelgesi",
-      "C) Erzurum Kongresi",
-      "D) Sivas Kongresi",
-      "E) Misak-ı Milli Kararları"
+      "A) Yalnız I",
+      "B) Yalnız II",
+      "C) Yalnız III",
+      "D) I ve II",
+      "E) II ve III"
     ],
     answer: 1,
-    explanation: "Amasya Genelgesi (22 Haziran 1919), Kurtuluş Savaşı'nın gerekçesini ('Vatanın bütünlüğü, milletin bağımsızlığı tehlikededir'), amacını ve yöntemini ('Milletin bağımsızlığını yine milletin azim ve kararı kurtaracaktır') ilk kez ortaya koyan ihtilal beyannamesidir.",
-    lawRef: "ÖSYM KPSS Tarih — Milli Mücadeleye Hazırlık Dönemi"
+    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **II. Öncül (Milli Egemenlik):** 'İrade-i milliyeyi hakim kılmak' ifadesi, padişah/saray iradesi yerine milletin egemenliğinin geçerli olacağını ilan eder. Bu doğrudan rejim ve milli egemenlikle ilgilidir.\n• **I ve III. Öncüller (Milli Bağımsızlık):** Vatanın bölünmezliği ve manda-himayenin reddi 'milli bağımsızlık' (dış güçlere karşı bağımsız olma) ile ilgilidir, milli egemenlik (iç yönetim şekli) ile değil.`,
+    lawRef: "ÖSYM KPSS Tarih — Erzurum Kongresi / Milli Egemenlik vs Bağımsızlık Ayrımı"
   },
   {
     id: 3,
     period: "2023 KPSS Lisans",
     topic: "Tarih",
-    subTopic: "Osmanlı Kültür ve Medeniyeti",
-    question: "Osmanlı Devleti'nde gelirleri doğrudan devlet hazinesine aktarılan ve vergileri 'iltizam sistemi' yoluyla mültezimler tarafından toplanan dirlik arazisi aşağıdakilerden hangisidir?",
+    subTopic: "Osmanlı Devleti Kültür ve Medeniyeti",
+    type: "oncullu",
+    question: `Osmanlı Devleti'nde Divan-ı Hümayun'da görev yapan;\n\nI. Kazasker,\nII. Şeyhülislam,\nIII. Sadrazam\n\nyetkililerinden hangileri **İlmiye sınıfı** mensubu olup din, hukuk ve eğitim işlerinden sorumludur?`,
     options: [
-      "A) Dirlik (Tımar)",
-      "B) Mukataa",
-      "C) Vakıf",
-      "D) Ocaklık",
-      "E) Yurtluk"
+      "A) Yalnız I",
+      "B) Yalnız II",
+      "C) I ve II",
+      "D) I ve III",
+      "E) I, II ve III"
     ],
-    answer: 1,
-    explanation: "Mukataa; gelirleri doğrudan doğruya devlet hazinesine (Hazine-i Amire) giden, vergileri iltizam sistemiyle peşin olarak mültezimlere ihale edilen miri arazi çeşididir. Ocaklık kale muhafızlarına, Yurtluk sınır boylarındaki akıncılara, Vakıf ise kamu yararına ayrılan topraklardır.",
-    lawRef: "ÖSYM KPSS Tarih — Osmanlı Toprak ve Maliye Sistemi"
+    answer: 2,
+    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **Kazasker ve Şeyhülislam:** Medrese çıkışlı olup Türk-Müslüman kökenli 'İlmiye' sınıfına mensuptur. Kazasker kadı ve müderris atamalarını yapar, davalara bakar; Şeyhülislam ise fetva makamıdır.\n• **Sadrazam:** Yönetim ve askeriye ile ilgili 'Seyfiye (Kılıç Ehli)' sınıfının başıdır.`,
+    lawRef: "ÖSYM KPSS Tarih — Osmanlı Divan Teşkilatı ve Sınıflar"
   },
   {
     id: 4,
     period: "2023 KPSS Lisans",
     topic: "Tarih",
-    subTopic: "Atatürk İlke ve İnkılapları",
-    question: "Türkiye'de özel sektörün sermaye yetersizliği nedeniyle gerçekleştiremediği yatırımların bizzat devlet eliyle yapılmasını ve 1933 yılında I. Beş Yıllık Sanayi Planı'nın hazırlanmasını sağlayan Atatürk ilkesi aşağıdakilerden hangisidir?",
+    subTopic: "Atatürk İlkeleri ve İnkılap Tarihi",
+    type: "oncullu",
+    question: `Cumhuriyet Dönemi'nde gerçekleştirilen;\n\nI. Aşar vergisinin kaldırılması (1925),\nII. Tevhid-i Tedrisat Kanunu ile eğitimin birleştirilmesi (1924),\nIII. Soyadı Kanunu ile unvan ve lakapların yasaklanması (1934)\n\ninkılaplarından hangileri doğrudan **Halkçılık ilkesi** doğrultusunda toplumda eşitlik sağlama amacı taşır?`,
     options: [
-      "A) Devletçilik",
-      "B) Laiklik",
-      "C) Milliyetçilik",
-      "D) Halkçılık",
-      "E) Cumhuriyetçilik"
-    ],
-    answer: 0,
-    explanation: "Devletçilik ilkesi; 1929 Dünya Ekonomik Buhranı sonrası özel teşebbüsün gücünün yetmediği büyük sanayi kuruluşlarının, fabrikaların ve bankaların (Etibank, Sümerbank) bizzat devlet eliyle kurulmasını öngören ekonomi modelidir.",
-    lawRef: "ÖSYM KPSS Tarih — Atatürk İlkeleri ve İktisat Politikaları"
-  },
-  {
-    id: 5,
-    period: "2022 KPSS Lisans",
-    topic: "Tarih",
-    subTopic: "Milli Mücadele Dönemi",
-    question: "Aşağıdakilerden hangisi Kurtuluş Savaşı sırasında toplanan Erzurum Kongresi'nin özelliklerinden biri değildir?",
-    options: [
-      "A) Toplanış bakımından bölgesel, aldığı kararlar bakımından ulusal olması",
-      "B) İlk kez milli sınırlardan (Misak-ı Milli) bahsedilmesi",
-      "C) Temsil Heyeti'nin ilk kez oluşturulması",
-      "D) Manda ve himayenin ilk kez reddedilmesi",
-      "E) Tüm cemiyetlerin 'Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyeti' adı altında birleştirilmesi"
+      "A) Yalnız I",
+      "B) Yalnız III",
+      "C) I ve II",
+      "D) I ve III",
+      "E) I, II ve III"
     ],
     answer: 4,
-    explanation: "Tüm cemiyetlerin tek çatı altında birleştirilmesi 'Sivas Kongresi'nde' gerçekleşmiştir. Erzurum Kongresi'nde sadece Doğu illerindeki cemiyetler (Şarki Anadolu Müdafaa-i Hukuk) birleştirilmişti.",
-    lawRef: "ÖSYM KPSS Tarih — Kongreler Dönemi"
+    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **Aşar Vergisinin Kaldırılması:** Köylü üzerindeki ağır vergi yükünü kaldırarak ekonomik eşitlik sağlamıştır.\n• **Tevhid-i Tedrisat:** Kız-erkek ve zengin-fakir ayrımı olmadan herkese eşit eğitim hakkı tanımıştır.\n• **Soyadı Kanunu:** Paşa, ağa, bey gibi ayrıcalıklı unvanları kaldırarak kanun önünde eşitlik sağlamıştır. Her üç inkılap da doğrudan Halkçılık ilkesidir.`,
+    lawRef: "ÖSYM KPSS Tarih — Atatürk İlkeleri ve Eşitlik İlkesi"
   },
 
-  // COĞRAFYA
+  // COĞRAFYA — ÖNCÜLLÜ SORULAR
+  {
+    id: 5,
+    period: "2024 KPSS Lisans",
+    topic: "Coğrafya",
+    subTopic: "Türkiye'nin Jeomorfolojisi ve Platoları",
+    type: "oncullu",
+    question: `Türkiye'nin platoları ve oluşum türleri ile ilgili olarak;\n\nI. Teke ve Taşeli Platoları ➔ Karstik Plato,\nII. Erzurum - Kars Platosu ➔ Lav (Volkanik) Platosu,\nIII. Çatalca - Kocaeli Platosu ➔ Aşınım (Peneplen) Platosu\n\neşleştirmelerinden hangileri **doğrudur**?`,
+    options: [
+      "A) Yalnız I",
+      "B) I ve II",
+      "C) I ve III",
+      "D) II ve III",
+      "E) I, II ve III"
+    ],
+    answer: 4,
+    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **I. Karstik:** Teke ve Taşeli kireçtaşı (kalker) erimesiyle oluşan karstik platolardır.\n• **II. Lav:** Erzurum-Kars ve Ardahan volkanik lav örtülerinden oluşan yüksek lav platolarıdır.\n• **III. Aşınım:** Çatalca-Kocaeli aşınarak deniz seviyesine yaklaşmış peneplen (aşınım) platosudur. Verilen üç eşleştirme de %100 doğrudur.`,
+    lawRef: "ÖSYM KPSS Coğrafya — Türkiye'nin Yer Şekilleri ve Platolar"
+  },
   {
     id: 6,
     period: "2024 KPSS Lisans",
     topic: "Coğrafya",
-    subTopic: "Türkiye'nin Fiziki Coğrafyası",
-    question: "Türkiye'de kalker (kireçtaşı), alçıtaşı (jips) ve kaya tuzu gibi suda kolay çözünebilen kayaçların bulunduğu alanlarda oluşan lapya, dolin, uvala, polye ve mağara gibi yer şekillerine ne ad verilir?",
+    subTopic: "Türkiye'nin Madenleri ve Sanayisi",
+    type: "oncullu",
+    question: `Türkiye'de bir sanayi tesisinin kuruluş yeri belirlenirken 'hammaddeye yakınlık' veya 'enerji kaynağına yakınlık' faktörleri belirleyici olmaktadır.\n\nBuna göre;\nI. Karabük Demir-Çelik Fabrikası ➔ Enerji kaynağına (Taş kömürü) yakınlık,\nII. Seydişehir Alüminyum Tesisleri ➔ Hammaddeye (Boksit) yakınlık,\nIII. Samsun Bakır İşletmesi ➔ Ulaşım (Liman) kolaylığı\n\ngerekçelendirmelerinden hangileri **doğrudur**?`,
     options: [
-      "A) Volkanik şekiller",
-      "B) Karstik şekiller",
-      "C) Buzul şekilleri",
-      "D) Rüzgâr aşınım şekilleri",
-      "E) Kıyı kordonu şekilleri"
+      "A) Yalnız I",
+      "B) I ve II",
+      "C) I ve III",
+      "D) II ve III",
+      "E) I, II ve III"
     ],
-    answer: 1,
-    explanation: "Kalker, jips ve kaya tuzunun çözünmesiyle oluşan yer şekillerine 'Karstik Şekiller' denir. Türkiye'de en yaygın olarak Akdeniz Bölgesi'nde (Teke ve Taşeli Platoları, Toroslar) görülür.",
-    lawRef: "ÖSYM KPSS Coğrafya — Türkiye'nin Jeomorfolojisi ve Karstik Alanlar"
+    answer: 4,
+    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **Karabük:** Demir madeni çıkmaz; ancak Zonguldak taş kömürüne (enerji kaynağı) yakın olduğu için kurulmuştur.\n• **Seydişehir:** Konya Seydişehir'de zengin Boksit madeni çıktığı için hammaddeye yakın kurulmuştur.\n• **Samsun:** Bakır madeni çıkmaz; deniz yoluyla Artvin ve Kastamonu'dan gelen cevherin işlenip ihraç edilmesi için liman/ulaşım avantajıyla kurulmuştur.`,
+    lawRef: "ÖSYM KPSS Coğrafya — Türkiye'de Sanayi Tesislerinin Kuruluş Yeri Faktörleri"
   },
+
+  // VATANDAŞLIK / ANAYASA — ÖNCÜLLÜ SORULAR
   {
     id: 7,
     period: "2024 KPSS Lisans",
-    topic: "Coğrafya",
-    subTopic: "Türkiye'nin Madenleri ve Enerji Kaynakları",
-    question: "Dünya rezervlerinin yaklaşık %72'si Türkiye'de bulunan; Balıkesir (Bigadiç, Susurluk), Bursa (Mustafakemalpaşa), Kütahya (Emet) ve Eskişehir (Seyitgazi)'de çıkarılan stratejik maden aşağıdakilerden hangisidir?",
+    topic: "Vatandaşlık",
+    subTopic: "1982 Anayasası — Yasama Denetimi",
+    type: "oncullu",
+    question: `1982 Anayasası'nda 2017 yılında yapılan anayasa değişiklikleri sonrasında TBMM'nin bilgi edinme ve denetim yolları arasında;\n\nI. Meclis Araştırması,\nII. Genel Görüşme,\nIII. Yazılı Soru,\nIV. Gensoru\n\naraçlarından hangileri **halen yer almaktadır**?`,
     options: [
-      "A) Boksit",
-      "B) Bor mineralleri",
-      "C) Bakır",
-      "D) Krom",
-      "E) Demir"
+      "A) I ve II",
+      "B) I, II ve III",
+      "C) I, III ve IV",
+      "D) II, III ve IV",
+      "E) I, II, III ve IV"
     ],
     answer: 1,
-    explanation: "Dünya rezervlerinin %72'den fazlası Türkiye'de bulunan maden 'BOR' madenidir. Formülü: 'BİBEK' (Balıkesir, Bursa, Eskişehir, Kütahya). Jet yakıtı, cam, seramik, deterjan ve nükleer sanayide kullanılır.",
-    lawRef: "ÖSYM KPSS Coğrafya — Madenler ve Enerji Kaynakları"
+    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **2017 Anayasa Değişikliği Kritik Bilgisi:** Parlamenter sistemden Cumhurbaşkanlığı Hükümet Sistemine geçilmesiyle hükümetin meclise karşı siyasi sorumluluğu olan **GENSORU** ve **GÖREV ZARARI (Sözlü Soru)** anayasadan tamamen kaldırılmıştır!\n• **Halen Geçerli Olanlar:** Meclis Araştırması, Genel Görüşme, Meclis Soruşturması ve Yazılı Soru (Milletvekillerinin CB Yardımcıları ve Bakanlara yönelttiği 15 günlük yazılı soru).`,
+    lawRef: "1982 T.C. Anayasası — Madde 98 (TBMM'nin Bilgi Edinme ve Denetim Yolları)"
   },
   {
     id: 8,
     period: "2023 KPSS Lisans",
-    topic: "Coğrafya",
-    subTopic: "Türkiye'nin İklimi ve Bitki Örtüsü",
-    question: "Akdeniz iklim bölgesinde kızılçam ormanlarının tahrip edilmesiyle oluşan kısa boylu, sert yapraklı, kuraklığa dayanıklı çalı topluluklarına 'maki' denir. Aşağıdakilerden hangisi maki türleri arasında yer almaz?",
+    topic: "Vatandaşlık",
+    subTopic: "1982 Anayasası — Yargı Organı",
+    type: "oncullu",
+    question: `1982 Anayasası'na göre Anayasa Mahkemesi'nin görev ve yetkileriyle ilgili olarak;\n\nI. Kanunların, Cumhurbaşkanlığı kararnamelerinin ve TBMM İçtüzüğünün anayasaya uygunluğunu denetlemek,\nII. Siyasi partilerin kapatılması davalarına bakmak,\nIII. Bireysel başvuruları karara bağlamak,\nIV. Sayıştay'ın vergi konusundaki kararlarına karşı yapılan temyiz başvurularını incelemek\n\nhükümlerinden hangileri **doğrudur**?`,
     options: [
-      "A) Zeytin",
-      "B) Defne",
-      "C) Zakkum",
-      "D) Sandal",
-      "E) Geven"
+      "A) I ve II",
+      "B) I, II ve III",
+      "C) I, III ve IV",
+      "D) II, III ve IV",
+      "E) I, II, III ve IV"
     ],
-    answer: 4,
-    explanation: "Geven, İç Anadolu Bölgesi'ndeki karasal iklim alanlarında görülen 'Bozkır (Step)' bitki örtüsünün tipik bir üyesidir. Zeytin, defne, zakkum, sandal, mersin, kocayemiş ve keçiboynuzu ise tipik Akdeniz maki türleridir.",
-    lawRef: "ÖSYM KPSS Coğrafya — Türkiye'nin Bitki Örtüsü"
+    answer: 1,
+    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **I, II ve III:** Anayasa Mahkemesi'nin asli görevleridir.\n• **IV. Öncül (Tuzak):** Sayıştay ile Danıştay'ın vergi konularındaki kararları uyuşmazsa **DANIŞTAY'IN** kararı esas alınır (AYM değil!). Sayıştay kararlarının temyizi Anayasa Mahkemesi'ne gitmez.`,
+    lawRef: "1982 T.C. Anayasası — Madde 148 (Anayasa Mahkemesi'nin Görev ve Yetkileri)"
   },
 
-  // VATANDAŞLIK VE ANAYASA
+  // TÜRKÇE — ÖNCÜLLÜ SORULAR
   {
     id: 9,
     period: "2024 KPSS Lisans",
-    topic: "Vatandaşlık",
-    subTopic: "1982 Anayasası — Yasama",
-    question: "1982 Anayasası'na göre Türkiye Büyük Millet Meclisi (TBMM) üye tamsayısı ve milletvekili genel seçimlerinin kaç yılda bir yapıldığı seçeneği aşağıdakilerden hangisinde doğru verilmiştir?",
+    topic: "Türkçe",
+    subTopic: "Cümle Analizi ve Dilbilgisi",
+    type: "oncullu",
+    question: `(I) Bozkırın ortasında yükselen bu antik kent, geçmişin izlerini bugüne taşıyor. (II) Taş döşeli caddelerde yürürken rüzgârın fısıltısını duyabiliyorsunuz. (III) Kazı alanındaki her buluntu, arkeologların heyecanını bir kat daha artırıyor. (IV) Güneş batarken sütunların gölgeleri vadiye doğru uzanıyor.\n\nNumaralanmış cümlelerle ilgili olarak aşağıdakilerden hangisi **yanlıştır**?`,
     options: [
-      "A) 550 Üye — 4 Yıl",
-      "B) 600 Üye — 5 Yıl",
-      "C) 600 Üye — 4 Yıl",
-      "D) 450 Üye — 5 Yıl",
-      "E) 550 Üye — 5 Yıl"
+      "A) I. cümlenin yüklemi birleşik fiildir.",
+      "B) II. cümlede zarf-fiil (ulaç) kullanılmıştır.",
+      "C) III. cümlede tamlayanı sıfat almış isim tamlaması vardır.",
+      "D) IV. cümlede yönelme durumu eki almış sözcük bulunmaktadır.",
+      "E) I. cümle kurallı ve fiil cümlesidir."
     ],
-    answer: 1,
-    explanation: "2017 Anayasa Değişikliği ile TBMM milletvekili sayısı 550'den 600'e çıkarılmış ve TBMM genel seçimleri ile Cumhurbaşkanlığı seçimlerinin '5 yılda bir aynı gün' yapılması hükme bağlanmıştır (1982 Anayasası m.75 ve m.77).",
-    lawRef: "1982 T.C. Anayasası — Madde 75 & 77 (Yasama Organı)"
+    answer: 0,
+    explanation: `💡 **ÖSYM Çözüm Analizi:**\n• **A Seçeneği (Yanlış):** I. cümlenin yüklemi 'taşıyor' sözcüğüdür. 'Taşımak' fiili şimdiki zaman kipi (-yor) almış basit yapılı bir fiildir, birleşik fiil değildir.\n• **B Seçeneği:** 'yürürken' sözcüğü -ken ekiyle türetilmiş bir zarf-fiildir.\n• **C Seçeneği:** 'arkeologların heyecanı' (isim tamlaması), 'her buluntu' (sıfat tamlaması).\n• **D Seçeneği:** 'vadi-ye' yönelme (-e/-a) durum ekidir.`,
+    lawRef: "ÖSYM KPSS Türkçe — Dilbilgisi ve Cümle Çözümlemesi"
   },
+
+  // MATEMATİK & SAYISAL MANTIK
   {
     id: 10,
     period: "2024 KPSS Lisans",
-    topic: "Vatandaşlık",
-    subTopic: "Temel Hukuk Bilgisi",
-    question: "Hukuk kurallarının diğer sosyal düzen kurallarından (din, ahlak, görgü) en temel ayırt edici özelliği aşağıdakilerden hangisidir?",
+    topic: "Matematik",
+    subTopic: "Sayısal Mantık & Eşitsizlik",
+    type: "oncullu",
+    question: `a, b ve c gerçel sayıları için;\n• a · b < 0\n• b + c = 0\n• a · c² > 0\n\nbilgileri veriliyor. Buna göre;\nI. a > 0\nII. b < 0\nIII. c > 0\n\nifadelerinden hangileri **kesinlikle doğrudur**?`,
     options: [
-      "A) Yazılı olması",
-      "B) Devlet gücüne dayalı maddi yaptırımlı (müeyyideli) olması",
-      "C) Toplum barışını hedeflemesi",
-      "D) Soyut ve genel olması",
-      "E) Sürekli olması"
-    ],
-    answer: 1,
-    explanation: "Din, ahlak ve görgü kurallarının yaptırımı manevidir (ayıplanma, vicdan azabı, dışlanma). Hukuk kurallarını diğerlerinden ayıran en temel fark; arkasında 'Devlet Gücü' olan MADDİ YAPTIRIM (ceza, cebri icra, tazminat, iptal, hükümsüzlük) bulunmasıdır.",
-    lawRef: "ÖSYM KPSS Vatandaşlık — Temel Hukuk Kavramları / Yaptırım Türleri"
-  },
-  {
-    id: 11,
-    period: "2023 KPSS Lisans",
-    topic: "Vatandaşlık",
-    subTopic: "1982 Anayasası — Yargı",
-    question: "1982 Anayasası'na göre Anayasa Mahkemesi toplam kaç üyeden oluşur ve üyelerin görev süresi kaç yıldır?",
-    options: [
-      "A) 15 Üye — 12 Yıl",
-      "B) 17 Üye — 12 Yıl",
-      "C) 12 Üye — 9 Yıl",
-      "D) 15 Üye — 9 Yıl",
-      "E) 11 Üye — 6 Yıl"
-    ],
-    answer: 0,
-    explanation: "2017 Anayasa değişikliği ile Askeri Yüksek Yargı kaldırılınca AYM üye sayısı 17'den 15'e düşürülmüştür. Üyeler 12 yıl için seçilir ve bir kimse iki defa Anayasa Mahkemesi üyesi seçilemez (Yaş haddi: 65).",
-    lawRef: "1982 T.C. Anayasası — Madde 146 & 147 (Anayasa Mahkemesi)"
-  },
-  {
-    id: 12,
-    period: "2023 KPSS Lisans",
-    topic: "Vatandaşlık",
-    subTopic: "İdare Hukuku",
-    question: "Aşağıdakilerden hangisi Türkiye'de Başkentin (Merkezin) taşradaki en yüksek mülki idare amiridir ve ilde Cumhurbaşkanı'nın temsilcisi sıfatıyla görev yapar?",
-    options: [
-      "A) Kaymakam",
-      "B) Vali",
-      "C) Belediye Başkanı",
-      "D) İl Genel Meclisi Başkanı",
-      "E) Defterdar"
-    ],
-    answer: 1,
-    explanation: "Vali; ilde devletin, hükümetin ve doğrudan Cumhurbaşkanı'nın temsilcisidir. Cumhurbaşkanı kararıyla atanır ve il genelinde yetki genişliğine (merkeze sormadan karar alabilme) sahip tek mülki amirdir. Kaymakam ise sadece Cumhurbaşkanı'nın temsilcisidir (Devletin temsilcisi değildir) ve yetki genişliği yoktur.",
-    lawRef: "İdare Hukuku — 5442 Sayılı İl İdaresi Kanunu"
-  },
-
-  // TÜRKÇE
-  {
-    id: 13,
-    period: "2024 KPSS Lisans",
-    topic: "Türkçe",
-    subTopic: "Yazım Kuralları",
-    question: "Aşağıdaki cümlelerin hangisinde büyük harflerin veya birleşik sözcüklerin yazımıyla ilgili bir yazım yanlışı vardır?",
-    options: [
-      "A) Türk Dil Kurumu Başkanlığına dilekçe ile başvurdu.",
-      "B) Türkiye'nin kuzeydoğusunda şiddetli yağış bekleniyor.",
-      "C) TBMM'nin 29 Ekim 1923 tarihindeki oturumu tarihi bir andı.",
-      "D) Resmi Gazete'de yayımlanan yönetmelik yürürlüğe girdi.",
-      "E) Bu yılki Antep Fıstığı rekoltesi üreticiyi sevindirdi."
+      "A) Yalnız I",
+      "B) Yalnız II",
+      "C) I ve II",
+      "D) I ve III",
+      "E) I, II ve III"
     ],
     answer: 4,
-    explanation: "Özel ada dahil olmayan tür ve cins isimleri küçük harfle başlar: 'Antep fıstığı', 'Van kedisi', 'Maraş dondurması', 'Hindistan cevizi', 'İngiliz anahtarı'. 'Fıstığı' kelimesinin baş harfi küçük yazılmalıdır.",
-    lawRef: "TDK Yazım Kılavuzu — Büyük Harflerin Kullanımı"
-  },
-  {
-    id: 14,
-    period: "2023 KPSS Lisans",
-    topic: "Türkçe",
-    subTopic: "Cümlede Anlam ve Anlatım",
-    question: "'Bir eserin kalıcılığı, yazarının çağını aşarak geleceğin insanına seslenebilmesinde ve insanlığın evrensel duygularına dokunmasında yatar.' Bu cümleden çıkarılabilecek en kapsamlı yargı aşağıdakilerden hangisidir?",
-    options: [
-      "A) Yalnızca kendi toplumunu anlatan yazarlar başarılı olur.",
-      "B) Evrenselliği ve zamana meydan okumayı yakalayan eserler ölümsüzleşir.",
-      "C) Sanatçı eserinde sade bir dil kullanmalıdır.",
-      "D) Edebiyat toplumun aynası olmak zorundadır.",
-      "E) Her yazar kendi döneminin sorunlarını yansıtmalıdır."
-    ],
-    answer: 1,
-    explanation: "'Kalıcılık' (ölümsüzlük), 'çağını aşmak' (zamana meydan okumak) ve 'evrensel duygular' (bütün insanlığı ilgilendiren değerler) ifadeleri en doğrudan B seçeneğinde sentezlenmiştir.",
-    lawRef: "ÖSYM KPSS Türkçe — Paragrafta Ana Fikir ve Yorum"
-  },
-
-  // MATEMATİK & MANTIK
-  {
-    id: 15,
-    period: "2024 KPSS Lisans",
-    topic: "Matematik",
-    subTopic: "Sayı ve Kesir Problemleri",
-    question: "Bir sınıftaki öğrenciler sıralara 2'şerli oturduklarında 5 öğrenci ayakta kalıyor. 3'erli oturduklarında ise 2 sıra boş kalıyor. Buna göre bu sınıfta toplam kaç öğrenci vardır?",
-    options: [
-      "A) 21",
-      "B) 25",
-      "C) 27",
-      "D) 31",
-      "E) 35"
-    ],
-    answer: 2,
-    explanation: "Sıra sayısına 'x' diyelim. Öğrenci sayısı denklemi:\n2x + 5 = 3(x - 2)\n2x + 5 = 3x - 6\n5 + 6 = 3x - 2x\nx = 11 (Sıra sayısı 11'dir).\nÖğrenci sayısı = 2(11) + 5 = 22 + 5 = 27 öğrenci.",
-    lawRef: "KPSS Matematik — Denklem Kurma ve Sıra Problemleri"
-  },
-
-  // GÜNCEL BİLGİLER & GENEL KÜLTÜR
-  {
-    id: 16,
-    period: "2024 KPSS Lisans",
-    topic: "Güncel Bilgiler",
-    subTopic: "Uluslararası Kuruluşlar ve Kültür",
-    question: "Birleşmiş Milletler Eğitim, Bilim ve Kültür Örgütü (UNESCO) Dünya Mirası Listesi'nde yer alan ve 'Tarihin Sıfır Noktası' olarak kabul edilen Neolitik Çağ arkeolojik alanı aşağıdakilerden hangisidir?",
-    options: [
-      "A) Çatalhöyük (Konya)",
-      "B) Göbeklitepe (Şanlıurfa)",
-      "C) Hattuşaş (Çorum)",
-      "D) Efes (İzmir)",
-      "E) Ani Ören Yeri (Kars)"
-    ],
-    answer: 1,
-    explanation: "Şanlıurfa il sınırları içinde bulunan ve yaklaşık 12.000 yıl öncesine tarihlenen Göbeklitepe, dünyanın bilinen en eski anıtsal tapınak kompleksi olup UNESCO Dünya Mirası Listesi'nde 'Tarihin Sıfır Noktası' olarak anılmaktadır.",
-    lawRef: "ÖSYM KPSS Güncel Bilgiler & Kültür Mirası"
+    explanation: `💡 **ÖSYM Çözüm Analizi:**\n1. 'c²' çift kuvvet olduğu için c ≠ 0 iken daima pozitiftir. a · c² > 0 olduğundan **a > 0 (Pozitif)** olmak zorundadır (I. öncül kesinlikle doğru).\n2. a · b < 0 ve a pozitif olduğuna göre **b < 0 (Negatif)** olmak zorundadır (II. öncül kesinlikle doğru).\n3. b + c = 0 eşitliğinden c = -b olur. b negatif olduğuna göre **c > 0 (Pozitif)** olmak zorundadır (III. öncül kesinlikle doğru).\nSonuç: I, II ve III kesinlikle doğrudur.`,
+    lawRef: "ÖSYM KPSS Matematik — Eşitsizlikler ve İşaret Analizi"
   }
 ];
